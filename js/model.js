@@ -13,7 +13,8 @@ let model = {
         {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
         {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
     ],
-    map: null
+    map: null,
+    markers:[]
 };
 
 let octopus = {
@@ -23,9 +24,16 @@ let octopus = {
     getCurrentMap:function(){
         return model.map;
     },
+    setMarker:function(marker){
+        model.markers.push(marker);
+    },
+    getMarkers:function(){
+        return model.markers;
+    },
     setCurrentMap:function(map){
         model.map = map;
     },
+
     getTitle:function(){
         return model.title;
     },
@@ -42,18 +50,33 @@ let octopus = {
 
 let view = {
     init:function () {
+        this.showListBtn = document.getElementById("show-listings");
+        this.hideListBtn = document.getElementById("hide-listings");
 
         let map = new google.maps.Map(document.getElementById('map'), {
             center: octopus.getCenter(),
             zoom: octopus.getZoom()
         });
-
-
         octopus.setCurrentMap(map);
+
+        view.renderMarkers();
+
+        let markers = octopus.getMarkers();
+
+        this.showListBtn.addEventListener('click',function () {
+            markers.forEach((element) =>{
+                element.setMap(map);
+            })
+        });
+
+        this.hideListBtn.addEventListener('click',function(){
+            markers.forEach((element) =>{
+                element.setMap(null);
+            })
+        });
 
     },
     renderMarkers:function () {
-        let map = octopus.getCurrentMap();
         //弹窗
         let infowindow = new google.maps.InfoWindow();
 
@@ -61,13 +84,14 @@ let view = {
         locations.forEach((element)=>{
             let marker = new google.maps.Marker({
                 position:element.location,
-                map:map,
                 title:element.title,
                 animation: google.maps.Animation.DROP
             });
             marker.addListener('click',function () {
                 view.popInfo(marker,infowindow);
-            })
+            });
+
+            octopus.setMarker(marker);
         });
 
     },
@@ -89,7 +113,6 @@ let view = {
 
 
 function initMap() {
-    view.init();
-    view.renderMarkers();
+    octopus.init();
 
 }
