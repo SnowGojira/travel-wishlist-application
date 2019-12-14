@@ -194,13 +194,24 @@ let octopus = {
     setPoly:function(poly){
         model.currentPoly = poly;
     },
-    togglePoly: function(){
-        if(!model.enablePoly){
+    // getLabel:function(){
+    //     return model.enablePoly;
+    // },
+    toggleLabel: function(){
+        let map = octopus.getCurrentMap();
+        let polygon = octopus.getPoly();
+        if(model.enablePoly){
             //
-            model.enablePoly = true;
+            ListView.toggleManager(null);
+            if (polygon !== null) {
+                polygon.setMap(null);
+                octopus.setPoly(polygon);
+            }
+            model.enablePoly = false;
         }else{
             //
-            model.enablePoly =false;
+            ListView.toggleManager(map);
+            model.enablePoly =true;
         }
     },
     getCurrentMap: function () {
@@ -334,7 +345,19 @@ let ListView = {
     init:function () {
         this.showListBtn = document.getElementById("show-listings");
         this.hideListBtn = document.getElementById("hide-listings");
-        this.toogleDraw = document.getElementById("toggle-drawing");
+        this.toggleDrawBtn = document.getElementById("toggle-drawing");
+
+        this.drawingManager = new google.maps.drawing.DrawingManager({
+            drawingMode: google.maps.drawing.OverlayType.POLYGON,
+            drawingControl: true,
+            drawingControlOptions: {
+                position: google.maps.ControlPosition.TOP_LEFT,
+                drawingModes: [
+                    google.maps.drawing.OverlayType.POLYGON
+                ]
+            }
+        });
+
 
         this.markers = octopus.getMarkers();
         this.map = octopus.getCurrentMap();
@@ -343,7 +366,10 @@ let ListView = {
         this.hideList();
 
         //this.render();
-        this.drawingManager(this.map);
+
+        ListView.toggleDrawBtn.addEventListener('click',function () {
+            octopus.toggleLabel();
+        });
     },
     showList:function(){
         let markers = this.markers;
@@ -363,30 +389,19 @@ let ListView = {
             })
         });
     },
-    drawingManager:function(){
-        let markers = this.markers;
-        let map = this.map;
+    toggleManager:function(map){
+        
         let polygon = octopus.getPoly();
-
-        let drawingManager = new google.maps.drawing.DrawingManager({
-            drawingMode: google.maps.drawing.OverlayType.POLYGON,
-            drawingControl: true,
-            drawingControlOptions: {
-                position: google.maps.ControlPosition.TOP_LEFT,
-                drawingModes: [
-                    google.maps.drawing.OverlayType.POLYGON
-                ]
-            }
-        });
+        let drawingManager = this.drawingManager;
 
         drawingManager.setMap(map);
 
         drawingManager.addListener('overlaycomplete', function(event) {
-            
-            if (polygon) {
-                polygon.setMap(null);
-                this.hideList();
-            }
+            // this is toggle part, I doult it useful
+            // if (polygon) {
+            //     polygon.setMap(null);
+            //     ListView.hideList();
+            // }
 
             drawingManager.setDrawingMode(null);
 
@@ -420,20 +435,6 @@ let ListView = {
         let area = google.maps.geometry.spherical.computeArea(polygon.getPath())
 
         console.log("area",area);
-    },
-    toggleDraw: function(label){
-        let polygon = octopus.getPoly();
-        let map = octopus.getCurrentMap();
-
-        if (label) {
-            MapView.drawingManager(null);
-            // In case the user drew anything, get rid of the polygon
-            if (polygon !== null) {
-                polygon.setMap(null);
-            }
-        } else {
-            MapView.drawingManager(map);
-        }
     }
 }
 

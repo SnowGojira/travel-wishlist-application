@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="350f06ec-1c5c-4e5d-83c9-13449edba6a2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_Code_6_StaticMapsAndStreetViewImagery.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project_Code_6_StaticMapsAndStreetViewImagery.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project_Code_7_Drawing.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project_Code_7_Drawing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/model.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/model.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -35,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project_Code_7_Drawing.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="368" column="7" lean-forward="true" selection-start-line="360" selection-start-column="6" selection-end-line="368" selection-end-column="7" />
+            <state relative-caret-position="217">
+              <caret line="349" column="10" selection-start-line="349" selection-start-column="10" selection-end-line="351" selection-end-column="11" />
               <folding>
                 <element signature="e#8556#10612#0" />
                 <element signature="e#10725#11042#0" />
@@ -49,11 +45,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="384" column="12" selection-start-line="384" selection-start-column="12" selection-end-line="384" selection-end-column="12" />
+            <state relative-caret-position="146">
+              <caret line="400" column="12" selection-start-line="400" selection-start-column="15" selection-end-line="403" selection-end-column="16" />
               <folding>
                 <element signature="e#765#4705#0" />
-                <element signature="e#10719#11055#0" />
+                <element signature="e#9549#9885#0" />
                 <element signature="e#12039#12055#0" />
               </folding>
             </state>
@@ -67,10 +63,11 @@
       <find>style</find>
       <find>marker</find>
       <find>pano</find>
-      <find>toggle</find>
       <find>drawing</find>
-      <find>map</find>
       <find>polygon</find>
+      <find>toggle</find>
+      <find>map</find>
+      <find>toggleD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -168,12 +165,12 @@
       <option name="presentableId" value="Default" />
       <updated>1575875089893</updated>
       <workItem from="1575875091951" duration="5825000" />
-      <workItem from="1576061214311" duration="11093000" />
+      <workItem from="1576061214311" duration="13893000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16918000" />
+    <option name="totallyTimeSpent" value="19718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="677" extended-state="0" />
@@ -240,8 +237,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_Code_7_Drawing.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="368" column="7" lean-forward="true" selection-start-line="360" selection-start-column="6" selection-end-line="368" selection-end-column="7" />
+        <state relative-caret-position="217">
+          <caret line="349" column="10" selection-start-line="349" selection-start-column="10" selection-end-line="351" selection-end-column="11" />
           <folding>
             <element signature="e#8556#10612#0" />
             <element signature="e#10725#11042#0" />
@@ -252,11 +249,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="384" column="12" selection-start-line="384" selection-start-column="12" selection-end-line="384" selection-end-column="12" />
+        <state relative-caret-position="146">
+          <caret line="400" column="12" selection-start-line="400" selection-start-column="15" selection-end-line="403" selection-end-column="16" />
           <folding>
             <element signature="e#765#4705#0" />
-            <element signature="e#10719#11055#0" />
+            <element signature="e#9549#9885#0" />
             <element signature="e#12039#12055#0" />
           </folding>
         </state>

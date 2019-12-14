@@ -247,10 +247,10 @@
         drawingManager.addListener('overlaycomplete', function(event) {
           // First, check if there is an existing polygon.
           // If there is, get rid of it and remove the markers
-          if (polygon) {
-            polygon.setMap(null);
-            hideListings(markers);
-          }
+          // if (polygon) {
+          //   polygon.setMap(null);
+          //   hideListings(markers);
+          // }
           // Switching the drawing mode to the HAND (i.e., no longer drawing).
           drawingManager.setDrawingMode(null);
           // Creating a new editable polygon from the overlay.
