@@ -1,5 +1,7 @@
 let model = {
     API_KEY: "AIzaSyB9cFpEapXB_PkLQ4eLW5I5IzIJCJ-HSiQ",
+    enablePoly: false,
+    currentPoly:null,
     currentLoc:null,
     center:{
         lat: 40.7413549, lng: -73.9980244
@@ -183,7 +185,23 @@ let model = {
 
 let octopus = {
     init: function () {
-        view.init();
+        MapView.init();
+        ListView.init()
+    },
+    getPoly:function(){
+        return model.currentPoly;
+    },
+    setPoly:function(poly){
+        model.currentPoly = poly;
+    },
+    togglePoly: function(){
+        if(!model.enablePoly){
+            //
+            model.enablePoly = true;
+        }else{
+            //
+            model.enablePoly =false;
+        }
     },
     getCurrentMap: function () {
         return model.map;
@@ -216,41 +234,26 @@ let octopus = {
 
 };
 
-let view = {
+//todo: draw a polygun
+//todo: show the marker add to the poly gun.
+let MapView = {
     init:function () {
-        this.showListBtn = document.getElementById("show-listings");
-        this.hideListBtn = document.getElementById("hide-listings");
-
         let map = new google.maps.Map(document.getElementById('map'), {
             center: octopus.getCenter(),
             zoom: octopus.getZoom(),
-            styles:octopus.getStyle()
+            styles:octopus.getStyle(),
+            mapTypeControl: false
         });
         octopus.setCurrentMap(map);
-
-        view.renderMarkers();
-
-        let markers = octopus.getMarkers();
-
-        this.showListBtn.addEventListener('click',function () {
-            markers.forEach((element) =>{
-                element.setMap(map);
-            })
-        });
-
-        this.hideListBtn.addEventListener('click',function(){
-            markers.forEach((element) =>{
-                element.setMap(null);
-            })
-        });
-
+        this.renderMarkers();
     },
     renderMarkers:function () {
+        let self = MapView;
         //弹窗
         let infowindow = new google.maps.InfoWindow();
 
-        const defaultIcon = view.markerIcon('6bb5f9'),
-          highlightedIcon = view.markerIcon('ec7f27');
+        const defaultIcon = self.markerIcon('6bb5f9'),
+          highlightedIcon = self.markerIcon('ec7f27');
 
         locations = octopus.getLocations();
         locations.forEach((element)=>{
@@ -261,7 +264,7 @@ let view = {
                 animation: google.maps.Animation.DROP
             });
             marker.addListener('click',function () {
-                view.popInfo(marker,infowindow);
+                self.popInfo(marker,infowindow);
             });
 
             marker.addListener('mouseover', function() {
@@ -278,8 +281,11 @@ let view = {
     popInfo:function(marker,info){
         // Check to make sure the infowindow is not already opened on this marker.
         if (info.marker !== marker) {
+            info.setContent('');
             info.marker = marker;
-            info.setContent('<div>' + marker.position + '</div>');
+
+            MapView.streetService(info,marker.position,marker.title);
+
             info.open(map, marker);
             // Make sure the marker property is cleared if the infowindow is closed.
             info.addListener('closeclick',function(){
@@ -288,15 +294,148 @@ let view = {
         }
     },
     markerIcon:function (color) {
-    let markerImage = new google.maps.MarkerImage(
-        `http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|${color}|40|_|%E2%80%A2`,
-        new google.maps.Size(21, 34),
-        new google.maps.Point(0, 0),
-        new google.maps.Point(10, 34),
-        new google.maps.Size(21,34));
-    return markerImage;
-}
+        return new google.maps.MarkerImage(
+            `http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|${color}|40|_|%E2%80%A2`,
+            new google.maps.Size(21, 34),
+            new google.maps.Point(0, 0),
+            new google.maps.Point(10, 34),
+            new google.maps.Size(21, 34));
+    },
+    streetService: function(infowindow,position,title){
+
+        let streetViewService = new google.maps.StreetViewService();
+        let radius = 50;
+
+        function getStreetView(data, status) {
+            if (status === google.maps.StreetViewStatus.OK) {
+                let nowLocation = data.location.latLng;
+                var panoramaOptions = {
+                    position: nowLocation,
+                    pov: {
+                        heading: google.maps.geometry.spherical.computeHeading(nowLocation, position),
+                        pitch: 30
+                    }
+                };
+
+                infowindow.setContent('<div>' + title + '</div><div id="pano"></div>');
+                var panorama = new google.maps.StreetViewPanorama( document.getElementById('pano')
+                    , panoramaOptions);
+            } else {
+                infowindow.setContent('<div>' + title + '</div>' +
+                    '<div>No Street View Found</div>');
+            }
+        }
+
+        streetViewService.getPanoramaByLocation(position, radius, getStreetView);
+    }
 };
+
+let ListView = {
+    init:function () {
+        this.showListBtn = document.getElementById("show-listings");
+        this.hideListBtn = document.getElementById("hide-listings");
+        this.toogleDraw = document.getElementById("toggle-drawing");
+
+        this.markers = octopus.getMarkers();
+        this.map = octopus.getCurrentMap();
+
+        this.showList();
+        this.hideList();
+
+        //this.render();
+        this.drawingManager(this.map);
+    },
+    showList:function(){
+        let markers = this.markers;
+        let map = this.map;
+        this.showListBtn.addEventListener('click',function () {
+            markers.forEach((element) =>{
+                element.setMap(map);
+            })
+        });
+    },
+    hideList:function(){
+        let markers = this.markers;
+
+        this.hideListBtn.addEventListener('click',function(){
+            markers.forEach((element) =>{
+                element.setMap(null);
+            })
+        });
+    },
+    drawingManager:function(){
+        let markers = this.markers;
+        let map = this.map;
+        let polygon = octopus.getPoly();
+
+        let drawingManager = new google.maps.drawing.DrawingManager({
+            drawingMode: google.maps.drawing.OverlayType.POLYGON,
+            drawingControl: true,
+            drawingControlOptions: {
+                position: google.maps.ControlPosition.TOP_LEFT,
+                drawingModes: [
+                    google.maps.drawing.OverlayType.POLYGON
+                ]
+            }
+        });
+
+        drawingManager.setMap(map);
+
+        drawingManager.addListener('overlaycomplete', function(event) {
+            
+            if (polygon) {
+                polygon.setMap(null);
+                this.hideList();
+            }
+
+            drawingManager.setDrawingMode(null);
+
+            polygon = event.overlay;
+            polygon.setEditable(true);
+            octopus.setPoly(polygon);
+            // Searching within the polygon.
+            ListView.searchMatchPoints();
+            polygon.getPath().addListener('set_at', ListView.searchMatchPoints);
+            polygon.getPath().addListener('insert_at', ListView.searchMatchPoints);
+
+        });
+
+    },
+    searchMatchPoints:function(){
+        let map = octopus.getCurrentMap();
+        let markers = octopus.getMarkers();
+        let polygon = octopus.getPoly();
+
+        markers.forEach((element)=>{
+            if (google.maps.geometry.poly.containsLocation(element.position, polygon)) {
+                element.setMap(map);
+            } else {
+                element.setMap(null);
+            }
+        });
+
+        octopus.setPoly(polygon);
+    },
+    calculateArea:function(polygon){
+        let area = google.maps.geometry.spherical.computeArea(polygon.getPath())
+
+        console.log("area",area);
+    },
+    toggleDraw: function(label){
+        let polygon = octopus.getPoly();
+        let map = octopus.getCurrentMap();
+
+        if (label) {
+            MapView.drawingManager(null);
+            // In case the user drew anything, get rid of the polygon
+            if (polygon !== null) {
+                polygon.setMap(null);
+            }
+        } else {
+            MapView.drawingManager(map);
+        }
+    }
+}
 
 
 

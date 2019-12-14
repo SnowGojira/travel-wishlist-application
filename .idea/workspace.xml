@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="350f06ec-1c5c-4e5d-83c9-13449edba6a2" name="Default Changelist" comment="" />
+    <list default="true" id="350f06ec-1c5c-4e5d-83c9-13449edba6a2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_Code_6_StaticMapsAndStreetViewImagery.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project_Code_6_StaticMapsAndStreetViewImagery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_Code_7_Drawing.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project_Code_7_Drawing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/model.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/model.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -11,50 +18,44 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="project7-Moving-Application" />
+  </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="23" column="61" lean-forward="true" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="100" />
+            <state relative-caret-position="341">
+              <caret line="17" column="70" selection-start-line="17" selection-start-column="70" selection-end-line="17" selection-end-column="70" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_Code_6_StaticMapsAndStreetViewImagery.html">
+        <entry file="file://$PROJECT_DIR$/Project_Code_7_Drawing.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12062" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/model.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-509">
-              <caret line="252" column="52" selection-start-line="252" selection-start-column="52" selection-end-line="252" selection-end-column="52" />
+            <state relative-caret-position="413">
+              <caret line="368" column="7" lean-forward="true" selection-start-line="360" selection-start-column="6" selection-end-line="368" selection-end-column="7" />
               <folding>
-                <element signature="e#765#4705#0" />
+                <element signature="e#8556#10612#0" />
+                <element signature="e#10725#11042#0" />
+                <element signature="e#11497#11868#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_Code_5_BeingStylish.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3735">
-              <caret line="253" column="92" selection-start-line="253" selection-start-column="92" selection-end-line="253" selection-end-column="92" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_Code_4_WindowShoppingPart2.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-745">
-              <caret line="74" column="19" lean-forward="true" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
+            <state relative-caret-position="159">
+              <caret line="384" column="12" selection-start-line="384" selection-start-column="12" selection-end-line="384" selection-end-column="12" />
+              <folding>
+                <element signature="e#765#4705#0" />
+                <element signature="e#10719#11055#0" />
+                <element signature="e#12039#12055#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,6 +66,11 @@
     <findStrings>
       <find>style</find>
       <find>marker</find>
+      <find>pano</find>
+      <find>toggle</find>
+      <find>drawing</find>
+      <find>map</find>
+      <find>polygon</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -74,6 +80,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Project_Code_5_BeingStylish.html" />
+        <option value="$PROJECT_DIR$/Project_Code_6_StaticMapsAndStreetViewImagery.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/Project_Code_7_Drawing.html" />
         <option value="$PROJECT_DIR$/js/model.js" />
       </list>
     </option>
@@ -104,6 +114,11 @@
             <path>
               <item name="project7-Moving-Application" type="b2602c69:ProjectViewProjectNode" />
               <item name="project7-Moving-Application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project7-Moving-Application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project7-Moving-Application" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="project7-Moving-Application" type="b2602c69:ProjectViewProjectNode" />
@@ -152,25 +167,21 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575875089893</updated>
-      <workItem from="1575875091951" duration="4978000" />
+      <workItem from="1575875091951" duration="5825000" />
+      <workItem from="1576061214311" duration="11093000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4978000" />
+    <option name="totallyTimeSpent" value="16918000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="677" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24981412" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4974359" visible="true" weight="0.24981412" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="GraphQL" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" sideWeight="0.50256413" side_tool="true" weight="0.24981412" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -178,6 +189,11 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="GraphQL" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -187,39 +203,62 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Project_Code_4_WindowShoppingPart2.html">
+    <entry file="file://$PROJECT_DIR$/Project_Code_6_StaticMapsAndStreetViewImagery.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-745">
-          <caret line="74" column="19" lean-forward="true" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
+        <state relative-caret-position="170">
+          <caret line="59" column="6" selection-start-line="59" selection-start-column="6" selection-end-line="62" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project_Code_5_BeingStylish.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3735">
-          <caret line="253" column="92" selection-start-line="253" selection-start-column="92" selection-end-line="253" selection-end-column="92" />
+        <state relative-caret-position="-3235">
+          <caret line="144" column="10" selection-start-line="144" selection-start-column="10" selection-end-line="144" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_Code_4_WindowShoppingPart2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="74" column="19" lean-forward="true" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="17" column="70" selection-start-line="17" selection-start-column="70" selection-end-line="17" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_Code_7_Drawing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="368" column="7" lean-forward="true" selection-start-line="360" selection-start-column="6" selection-end-line="368" selection-end-column="7" />
+          <folding>
+            <element signature="e#8556#10612#0" />
+            <element signature="e#10725#11042#0" />
+            <element signature="e#11497#11868#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-509">
-          <caret line="252" column="52" selection-start-line="252" selection-start-column="52" selection-end-line="252" selection-end-column="52" />
+        <state relative-caret-position="159">
+          <caret line="384" column="12" selection-start-line="384" selection-start-column="12" selection-end-line="384" selection-end-column="12" />
           <folding>
             <element signature="e#765#4705#0" />
+            <element signature="e#10719#11055#0" />
+            <element signature="e#12039#12055#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project_Code_6_StaticMapsAndStreetViewImagery.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12062" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="23" column="61" lean-forward="true" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="100" />
         </state>
       </provider>
     </entry>

@@ -6,6 +6,7 @@ body {
     padding: 0;
 }
 
+
 .container {
     height: 100%;
     position: relative;
@@ -44,4 +45,9 @@ h1 {
     padding: 10px 10px 30px 10px;
     text-align: left;
     width: 340px;
+}
+
+#pano {
+    width: 200px;
+    height: 200px;
 }
