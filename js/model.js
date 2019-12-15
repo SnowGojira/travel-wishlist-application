@@ -346,6 +346,7 @@ let ListView = {
         this.showListBtn = document.getElementById("show-listings");
         this.hideListBtn = document.getElementById("hide-listings");
         this.toggleDrawBtn = document.getElementById("toggle-drawing");
+        this.zoomBtn = document.getElementById('zoom-to-area');
 
         this.drawingManager = new google.maps.drawing.DrawingManager({
             drawingMode: google.maps.drawing.OverlayType.POLYGON,
@@ -362,14 +363,22 @@ let ListView = {
         this.markers = octopus.getMarkers();
         this.map = octopus.getCurrentMap();
 
+
+        this.render();
+
+    },
+    render:function(){
         this.showList();
         this.hideList();
-
-        //this.render();
 
         ListView.toggleDrawBtn.addEventListener('click',function () {
             octopus.toggleLabel();
         });
+
+        ListView.zoomBtn.addEventListener('click', function() {
+            ListView.zoomToArea();
+        });
+
     },
     showList:function(){
         let markers = this.markers;
@@ -390,7 +399,7 @@ let ListView = {
         });
     },
     toggleManager:function(map){
-        
+
         let polygon = octopus.getPoly();
         let drawingManager = this.drawingManager;
 
@@ -435,6 +444,35 @@ let ListView = {
         let area = google.maps.geometry.spherical.computeArea(polygon.getPath())
 
         console.log("area",area);
+    },
+    zoomToArea:function () {
+        let map = this.map;
+        // Initialize the geocoder.
+        var geocoder = new google.maps.Geocoder();
+        // Get the address or place that the user entered.
+        var address = document.getElementById('zoom-to-area-text').value;
+        // Make sure the address isn't blank.
+        if (address == '') {
+            window.alert('You must enter an area, or address.');
+        } else {
+            // Geocode the address/area entered to get the center. Then, center the map
+            // on it and zoom in
+            geocoder.geocode(
+                {
+                    address: address,
+                    componentRestrictions: {locality: 'New York'}
+                }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        map.setCenter(results[0].geometry.location);
+                        map.setZoom(15);
+
+                        octopus.setCurrentMap(map);
+                    } else {
+                        window.alert('We could not find that location - try entering a more' +
+                            ' specific place.');
+                    }
+                });
+        }
     }
 }
 
