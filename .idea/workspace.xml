@@ -23,17 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_Code_8_GeocodingInTheApp.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="413" column="15" lean-forward="true" selection-start-line="392" selection-start-column="8" selection-end-line="413" selection-end-column="15" />
+            <state relative-caret-position="179">
+              <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -42,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="456">
-              <caret line="60" column="1" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
+              <caret line="76" column="1" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -50,13 +41,25 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="649">
-              <caret line="474" column="9" selection-start-line="474" selection-start-column="9" selection-end-line="474" selection-end-column="9" />
+            <state relative-caret-position="345">
+              <caret line="384" column="36" selection-start-line="384" selection-start-column="36" selection-end-line="384" selection-end-column="36" />
               <folding>
                 <element signature="e#765#4705#0" />
                 <element signature="e#9549#9885#0" />
+                <element signature="e#10170#11882#0" />
                 <element signature="e#12039#12055#0" />
+                <element signature="e#12033#12049#0" />
+                <element signature="e#12692#13880#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Project_Code_9_MyCommuteDistanceMatrixAPIPart2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="285" column="11" lean-forward="true" selection-start-line="283" selection-start-column="8" selection-end-line="285" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -84,8 +87,8 @@
         <option value="$PROJECT_DIR$/Project_Code_5_BeingStylish.html" />
         <option value="$PROJECT_DIR$/Project_Code_6_StaticMapsAndStreetViewImagery.html" />
         <option value="$PROJECT_DIR$/Project_Code_7_Drawing.html" />
-        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/js/model.js" />
       </list>
     </option>
@@ -170,12 +173,12 @@
       <option name="presentableId" value="Default" />
       <updated>1575875089893</updated>
       <workItem from="1575875091951" duration="5825000" />
-      <workItem from="1576061214311" duration="15718000" />
+      <workItem from="1576061214311" duration="18909000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21543000" />
+    <option name="totallyTimeSpent" value="24734000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="677" extended-state="0" />
@@ -238,20 +241,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="60" column="1" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project_Code_8_GeocodingInTheApp.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
@@ -259,14 +248,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="76" column="1" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_Code_9_MyCommuteDistanceMatrixAPIPart2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="285" column="11" lean-forward="true" selection-start-line="283" selection-start-column="8" selection-end-line="285" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="474" column="9" selection-start-line="474" selection-start-column="9" selection-end-line="474" selection-end-column="9" />
+        <state relative-caret-position="345">
+          <caret line="384" column="36" selection-start-line="384" selection-start-column="36" selection-end-line="384" selection-end-column="36" />
           <folding>
             <element signature="e#765#4705#0" />
             <element signature="e#9549#9885#0" />
+            <element signature="e#10170#11882#0" />
             <element signature="e#12039#12055#0" />
+            <element signature="e#12033#12049#0" />
+            <element signature="e#12692#13880#0" />
           </folding>
         </state>
       </provider>

@@ -6,7 +6,6 @@ body {
     padding: 0;
 }
 
-
 .container {
     height: 100%;
     position: relative;
@@ -26,6 +25,13 @@ h1 {
 #hide-listings,
 #show-listings {
     width: 48%;
+}
+
+hr {
+    background: #D0D7D9;
+    height: 1px;
+    margin: 20px 0 20px 0;
+    border: none;
 }
 
 #map {
@@ -51,11 +57,21 @@ h1 {
     width: 200px;
     height: 200px;
 }
-#zoom-to-area-text {
-    position: relative;
-    width: 70%;
+
+#search-within-time-text {
+    width: 84%;
 }
 
-#zoom-to-area {
-    width: 24%;
+.text {
+    font-size: 12px;
+}
+
+#toggle-drawing {
+    width: 27%;
+    position: relative;
+    margin-left: 10px;
+}
+
+#zoom-to-area-text {
+    width: 70%;
 }

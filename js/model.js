@@ -343,11 +343,17 @@ let MapView = {
 
 let ListView = {
     init:function () {
+        //init dom element
         this.showListBtn = document.getElementById("show-listings");
         this.hideListBtn = document.getElementById("hide-listings");
         this.toggleDrawBtn = document.getElementById("toggle-drawing");
         this.zoomBtn = document.getElementById('zoom-to-area');
-
+        this.zoomInput = document.getElementById('zoom-to-area-text');
+        this.searchWithinBtn = document.getElementById('search-within-time')
+        //get lint to the model
+        this.markers = octopus.getMarkers();
+        this.map = octopus.getCurrentMap();
+        //init the service
         this.drawingManager = new google.maps.drawing.DrawingManager({
             drawingMode: google.maps.drawing.OverlayType.POLYGON,
             drawingControl: true,
@@ -358,16 +364,12 @@ let ListView = {
                 ]
             }
         });
+        this.geocoder = new google.maps.Geocoder();
 
-
-        this.markers = octopus.getMarkers();
-        this.map = octopus.getCurrentMap();
-
-
-        this.render();
+        this.handleEvent();
 
     },
-    render:function(){
+    handleEvent:function(){
         this.showList();
         this.hideList();
 
@@ -377,6 +379,11 @@ let ListView = {
 
         ListView.zoomBtn.addEventListener('click', function() {
             ListView.zoomToArea();
+        });
+
+        this.searchWithinBtn.addEventListener('click', function() {
+            console.log('hello hello');
+            //searchWithinTime();
         });
 
     },
@@ -406,26 +413,22 @@ let ListView = {
         drawingManager.setMap(map);
 
         drawingManager.addListener('overlaycomplete', function(event) {
-            // this is toggle part, I doult it useful
-            // if (polygon) {
-            //     polygon.setMap(null);
-            //     ListView.hideList();
-            // }
 
             drawingManager.setDrawingMode(null);
 
             polygon = event.overlay;
             polygon.setEditable(true);
             octopus.setPoly(polygon);
+
             // Searching within the polygon.
-            ListView.searchMatchPoints();
+            ListView.searchPolyMatchPoints();
             polygon.getPath().addListener('set_at', ListView.searchMatchPoints);
             polygon.getPath().addListener('insert_at', ListView.searchMatchPoints);
 
         });
 
     },
-    searchMatchPoints:function(){
+    searchPolyMatchPoints:function(){
         let map = octopus.getCurrentMap();
         let markers = octopus.getMarkers();
         let polygon = octopus.getPoly();
@@ -440,17 +443,16 @@ let ListView = {
 
         octopus.setPoly(polygon);
     },
-    calculateArea:function(polygon){
-        let area = google.maps.geometry.spherical.computeArea(polygon.getPath())
+    calculateAreaWithPoly:function(polygon){
+        let area = google.maps.geometry.spherical.computeArea(polygon.getPath());
 
         console.log("area",area);
     },
     zoomToArea:function () {
         let map = this.map;
-        // Initialize the geocoder.
-        var geocoder = new google.maps.Geocoder();
+        let geocoder = this.geocoder;
         // Get the address or place that the user entered.
-        var address = document.getElementById('zoom-to-area-text').value;
+        let address = this.zoomInput.value;
         // Make sure the address isn't blank.
         if (address == '') {
             window.alert('You must enter an area, or address.');
@@ -462,7 +464,8 @@ let ListView = {
                     address: address,
                     componentRestrictions: {locality: 'New York'}
                 }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        //results[0]一串结果中最match的结果
                         map.setCenter(results[0].geometry.location);
                         map.setZoom(15);
 
