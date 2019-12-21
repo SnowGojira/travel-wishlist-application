@@ -3,6 +3,7 @@ let model = {
     enablePoly: false,
     currentPoly:null,
     currentLoc:null,
+    distanceResponse:null,
     center:{
         lat: 40.7413549, lng: -73.9980244
     },
@@ -226,6 +227,12 @@ let octopus = {
     getMarkers: function () {
         return model.markers;
     },
+    setDistanceResponse: function (response) {
+        model.distanceResponse=response;
+    },
+    getDistanceResponse: function () {
+        return model.distanceResponse;
+    },
     setCurrentMap: function (map) {
         model.map = map;
     },
@@ -349,7 +356,10 @@ let ListView = {
         this.toggleDrawBtn = document.getElementById("toggle-drawing");
         this.zoomBtn = document.getElementById('zoom-to-area');
         this.zoomInput = document.getElementById('zoom-to-area-text');
-        this.searchWithinBtn = document.getElementById('search-within-time')
+        this.searchDistanceBtn = document.getElementById('search-within-time');
+        this.searchDistanceInput = document.getElementById('search-within-time-text');
+        this.modeSelector=document.getElementById('mode');
+        this.maxDuration = document.getElementById('max-duration');
         //get lint to the model
         this.markers = octopus.getMarkers();
         this.map = octopus.getCurrentMap();
@@ -365,6 +375,8 @@ let ListView = {
             }
         });
         this.geocoder = new google.maps.Geocoder();
+        this.distanceMatrixService = new google.maps.DistanceMatrixService;
+
 
         this.handleEvent();
 
@@ -373,16 +385,17 @@ let ListView = {
         this.showList();
         this.hideList();
 
-        ListView.toggleDrawBtn.addEventListener('click',function () {
+        this.toggleDrawBtn.addEventListener('click',function () {
             octopus.toggleLabel();
         });
 
-        ListView.zoomBtn.addEventListener('click', function() {
+        this.zoomBtn.addEventListener('click', function() {
             ListView.zoomToArea();
         });
 
-        this.searchWithinBtn.addEventListener('click', function() {
-            console.log('hello hello');
+        this.searchDistanceBtn.addEventListener('click', function() {
+            //console.log('hello hello');
+            ListView.searchWithinDistance();
             //searchWithinTime();
         });
 
@@ -475,6 +488,94 @@ let ListView = {
                             ' specific place.');
                     }
                 });
+        }
+    },
+    searchWithinDistance:function () {
+        // Initialize the distance matrix service.
+        let distanceMatrixService = this.distanceMatrixService;
+        let address = this.searchDistanceInput.value;
+        let markers = this.markers;
+        // Check to make sure the place entered isn't blank.
+        if (address === '') {
+            window.alert('You must enter an address.');
+        } else {
+            ListView.hideList();
+            // Use the distance matrix service to calculate the duration of the
+            // routes between all our markers, and the destination address entered
+            // by the user. Then put all the origins into an origin matrix.
+            var origins = [];
+            // markers.forEach((element,index) =>{
+            //     origins[i] = element.position;
+            // });
+
+            for (var i = 0; i < markers.length; i++) {
+                origins[i] = markers[i].position;
+            }
+            console.log("origins",origins);
+            var destination = address;
+            // var mode = document.getElementById('mode').value;
+            var mode = this.modeSelector.value;
+            // Now that both the origins and destination are defined, get all the
+            // info for the distances between them.
+            distanceMatrixService.getDistanceMatrix({
+                origins: origins,
+                destinations: [destination],
+                travelMode: google.maps.TravelMode[mode],
+                unitSystem: google.maps.UnitSystem.IMPERIAL,
+            }, function(response, status) {
+                octopus.setDistanceResponse(response);
+                if (status !== google.maps.DistanceMatrixStatus.OK) {
+                    window.alert('Error was: ' + status);
+                } else {
+                    ListView.displayMarkersWithinDistance();
+                }
+            });
+        }
+    },
+    displayMarkersWithinDistance:function () {
+        let response = octopus.getDistanceResponse();
+        let maxDuration = this.maxDuration.value;
+        let origins = response.originAddresses;
+        let map = this.map;
+        let markers = this.markers;
+        // Parse through the results, and get the distance and duration of each.
+        // Because there might be  multiple origins and destinations we have a nested loop
+        // Then, make sure at least 1 result was found.
+        let atLeastOne = false;
+        origins.forEach((origin,i)=>{
+            let results = response.rows[i].elements;
+            results.forEach( element =>{
+                if (element.status === "OK") {
+                    // The distance is returned in feet, but the TEXT is in miles. If we wanted to switch
+                    // the function to show markers within a user-entered DISTANCE, we would need the
+                    // value for distance, but for now we only need the text.
+                    var distanceText = element.distance.text;
+                    // Duration value is given in seconds so we make it MINUTES. We need both the value
+                    // and the text.
+                    var duration = element.duration.value / 60;
+                    var durationText = element.duration.text;
+                    if (duration <= maxDuration) {
+                        //the origin [i] should = the markers[i]
+                        markers[i].setMap(map);
+                        atLeastOne = true;
+                        // Create a mini infowindow to open immediately and contain the
+                        // distance and duration
+                        let infowindow = new google.maps.InfoWindow({
+                            content: `${durationText} away, ${distanceText}`
+                        });
+                        infowindow.open(map, markers[i]);
+                        // Put this in so that this small window closes if the user clicks
+                        // the marker, when the big infowindow opens
+                        markers[i].infowindow = infowindow;
+                        google.maps.event.addListener(markers[i], 'click', function () {
+                            this.infowindow.close();
+                        });
+                    }
+                }
+            });
+        });
+        if (!atLeastOne) {
+            window.alert('We could not find any locations within that distance!');
         }
     }
 }
