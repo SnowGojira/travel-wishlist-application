@@ -348,8 +348,8 @@ let MapView = {
         streetViewService.getPanoramaByLocation(position, radius, getStreetView);
     }
 };
-//todo: the
-//todo: show the marker add to the poly gun.
+//todo: hideListView's marker has some problem. infowindows shown twice.
+//todo: logic is not smoothly, need to make it correctly
 let ListView = {
     init:function () {
         //init dom element
