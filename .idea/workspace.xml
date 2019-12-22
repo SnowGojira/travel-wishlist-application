@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="350f06ec-1c5c-4e5d-83c9-13449edba6a2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_Code_11_FasterIsBetterPlacesAutocompletePart1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project_Code_11_FasterIsBetterPlacesAutocompletePart1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/model.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/model.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -40,30 +40,35 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="534" column="45" selection-start-line="534" selection-start-column="45" selection-end-line="534" selection-end-column="45" />
+            <state relative-caret-position="41">
+              <caret line="1" column="14" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="53" />
               <folding>
+                <element signature="e#6240#9532#0" />
                 <element signature="e#8495#9530#0" />
                 <element signature="e#11159#11400#0" />
-                <element signature="e#11425#11638#0" />
                 <element signature="e#11671#12316#0" />
                 <element signature="e#12354#12773#0" />
                 <element signature="e#12818#12942#0" />
                 <element signature="e#12971#14132#0" />
-                <element signature="e#16268#18727#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_Code_9_MyCommuteDistanceMatrixAPIPart2.html">
+        <entry file="file://$PROJECT_DIR$/Project_Code_11_FasterIsBetterPlacesAutocompletePart1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="527" column="7" lean-forward="true" selection-start-line="483" selection-start-column="6" selection-end-line="527" selection-end-column="7" />
-              <folding>
-                <element signature="e#17456#19713#0" />
-              </folding>
+            <state relative-caret-position="-3150">
+              <caret line="377" column="15" selection-start-line="377" selection-start-column="15" selection-end-line="377" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Project_Code_10_DisplayingRoutesDirectionsService.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="478">
+              <caret line="562" column="7" lean-forward="true" selection-start-line="534" selection-start-column="6" selection-end-line="562" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -81,6 +86,7 @@
       <find>toggleD</find>
       <find>map</find>
       <find>displayMarkersWithinTime</find>
+      <find>search-within-time-text</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -94,6 +100,7 @@
         <option value="$PROJECT_DIR$/Project_Code_7_Drawing.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/Project_Code_11_FasterIsBetterPlacesAutocompletePart1.html" />
         <option value="$PROJECT_DIR$/js/model.js" />
       </list>
     </option>
@@ -179,12 +186,12 @@
       <updated>1575875089893</updated>
       <workItem from="1575875091951" duration="5825000" />
       <workItem from="1576061214311" duration="19712000" />
-      <workItem from="1576927736995" duration="2620000" />
+      <workItem from="1576927736995" duration="7169000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28157000" />
+    <option name="totallyTimeSpent" value="32706000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="677" extended-state="0" />
@@ -278,19 +285,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Project_Code_10_DisplayingRoutesDirectionsService.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="562" column="7" lean-forward="true" selection-start-line="534" selection-start-column="6" selection-end-line="562" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_Code_11_FasterIsBetterPlacesAutocompletePart1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3150">
+          <caret line="377" column="15" selection-start-line="377" selection-start-column="15" selection-end-line="377" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="534" column="45" selection-start-line="534" selection-start-column="45" selection-end-line="534" selection-end-column="45" />
+        <state relative-caret-position="41">
+          <caret line="1" column="14" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="53" />
           <folding>
+            <element signature="e#6240#9532#0" />
             <element signature="e#8495#9530#0" />
             <element signature="e#11159#11400#0" />
-            <element signature="e#11425#11638#0" />
             <element signature="e#11671#12316#0" />
             <element signature="e#12354#12773#0" />
             <element signature="e#12818#12942#0" />
             <element signature="e#12971#14132#0" />
-            <element signature="e#16268#18727#0" />
           </folding>
         </state>
       </provider>

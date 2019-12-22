@@ -224,6 +224,9 @@ let octopus = {
     setMarker: function (marker) {
         model.markers.push(marker);
     },
+    setCurrentMarker:function(marker,index){
+        model.markers[index] = marker;
+    },
     getMarkers: function () {
         return model.markers;
     },
@@ -252,8 +255,6 @@ let octopus = {
 
 };
 
-//todo: draw a polygun
-//todo: show the marker add to the poly gun.
 let MapView = {
     init:function () {
         let map = new google.maps.Map(document.getElementById('map'), {
@@ -347,7 +348,8 @@ let MapView = {
         streetViewService.getPanoramaByLocation(position, radius, getStreetView);
     }
 };
-
+//todo: the
+//todo: show the marker add to the poly gun.
 let ListView = {
     init:function () {
         //init dom element
@@ -376,7 +378,7 @@ let ListView = {
         });
         this.geocoder = new google.maps.Geocoder();
         this.distanceMatrixService = new google.maps.DistanceMatrixService;
-
+        this.directionsService = new google.maps.DirectionsService;
 
         this.handleEvent();
 
@@ -394,9 +396,7 @@ let ListView = {
         });
 
         this.searchDistanceBtn.addEventListener('click', function() {
-            //console.log('hello hello');
             ListView.searchWithinDistance();
-            //searchWithinTime();
         });
 
     },
@@ -410,7 +410,8 @@ let ListView = {
         });
     },
     hideList:function(){
-        let markers = this.markers;
+        console.log("hide");
+        let markers = octopus.getMarkers();
 
         this.hideListBtn.addEventListener('click',function(){
             markers.forEach((element) =>{
@@ -495,6 +496,8 @@ let ListView = {
         let distanceMatrixService = this.distanceMatrixService;
         let address = this.searchDistanceInput.value;
         let markers = this.markers;
+
+        console.log("markers",markers);
         // Check to make sure the place entered isn't blank.
         if (address === '') {
             window.alert('You must enter an address.');
@@ -557,11 +560,15 @@ let ListView = {
                     if (duration <= maxDuration) {
                         //the origin [i] should = the markers[i]
                         markers[i].setMap(map);
+                        octopus.setCurrentMarker(markers[i],i);
+
                         atLeastOne = true;
                         // Create a mini infowindow to open immediately and contain the
                         // distance and duration
                         let infowindow = new google.maps.InfoWindow({
-                            content: `${durationText} away, ${distanceText}`
+                            content: `${durationText} away, ${distanceText}`+
+                                '<div><input type=\"button\" value=\"View Route\" onclick =' +
+                                '\"ListView.displayDirections(&quot;' + origin + '&quot;);\"></input></div>'
                         });
                         infowindow.open(map, markers[i]);
                         // Put this in so that this small window closes if the user clicks
@@ -577,7 +584,38 @@ let ListView = {
         if (!atLeastOne) {
             window.alert('We could not find any locations within that distance!');
         }
-    }
+    },
+    displayDirections:function (origin) {
+        ListView.hideList();
+
+        let map = this.map;
+        let directionsService = this.directionsService;
+        // Get the destination address from the user entered value.
+        var destinationAddress = this.searchDistanceInput.value;
+        // Get mode again from the user entered value.
+        var mode = this.modeSelector.value;
+        directionsService.route({
+        // The origin is the passed in marker's position.
+        origin: origin,
+        // The destination is user entered address.
+        destination: destinationAddress,
+        travelMode: google.maps.TravelMode[mode]
+    }, function(response, status) {
+        if (status === google.maps.DirectionsStatus.OK) {
+            var directionsDisplay = new google.maps.DirectionsRenderer({
+                map: map,
+                directions: response,
+                draggable: true,
+                polylineOptions: {
+                    strokeColor: 'green'
+                }
+            });
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
+}
+
 }
 
 
