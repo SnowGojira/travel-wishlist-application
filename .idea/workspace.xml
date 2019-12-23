@@ -21,8 +21,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1722">
+            <state relative-caret-position="179">
               <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Project_Code_5_BeingStylish.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="381">
+              <caret line="197" column="8" selection-start-line="197" selection-start-column="8" selection-end-line="198" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -39,12 +48,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="351" column="56" selection-start-line="351" selection-start-column="56" selection-end-line="351" selection-end-column="56" />
+            <state relative-caret-position="-731">
+              <caret line="387" column="70" selection-start-line="387" selection-start-column="70" selection-end-line="387" selection-end-column="70" />
               <folding>
                 <element signature="e#6240#9532#0" />
                 <element signature="e#8495#9530#0" />
-                <element signature="e#11159#11400#0" />
                 <element signature="e#11671#12316#0" />
                 <element signature="e#12354#12773#0" />
                 <element signature="e#12818#12942#0" />
@@ -87,6 +95,8 @@
       <find>displayMarkersWithinTime</find>
       <find>search-within-time-text</find>
       <find>todo</find>
+      <find>hide</find>
+      <find>hideList</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -186,12 +196,12 @@
       <updated>1575875089893</updated>
       <workItem from="1575875091951" duration="5825000" />
       <workItem from="1576061214311" duration="19712000" />
-      <workItem from="1576927736995" duration="7684000" />
+      <workItem from="1576927736995" duration="8430000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33221000" />
+    <option name="totallyTimeSpent" value="33967000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="677" extended-state="0" />
@@ -228,13 +238,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project_Code_5_BeingStylish.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3235">
-          <caret line="144" column="10" selection-start-line="144" selection-start-column="10" selection-end-line="144" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project_Code_4_WindowShoppingPart2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="41">
@@ -258,13 +261,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
           <caret line="413" column="15" lean-forward="true" selection-start-line="392" selection-start-column="8" selection-end-line="413" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1722">
-          <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -299,14 +295,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Project_Code_3_WindowShoppingPart1.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_Code_2_MakingYourMark.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_Code_5_BeingStylish.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="197" column="8" selection-start-line="197" selection-start-column="8" selection-end-line="198" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="351" column="56" selection-start-line="351" selection-start-column="56" selection-end-line="351" selection-end-column="56" />
+        <state relative-caret-position="-731">
+          <caret line="387" column="70" selection-start-line="387" selection-start-column="70" selection-end-line="387" selection-end-column="70" />
           <folding>
             <element signature="e#6240#9532#0" />
             <element signature="e#8495#9530#0" />
-            <element signature="e#11159#11400#0" />
             <element signature="e#11671#12316#0" />
             <element signature="e#12354#12773#0" />
             <element signature="e#12818#12942#0" />

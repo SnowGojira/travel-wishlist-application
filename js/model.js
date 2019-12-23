@@ -384,8 +384,8 @@ let ListView = {
 
     },
     handleEvent:function(){
-        this.showList();
-        this.hideList();
+        this.showListBtn.addEventListener('click',ListView.showList);
+        this.hideListBtn.addEventListener('click', ListView.hideList);
 
         this.toggleDrawBtn.addEventListener('click',function () {
             octopus.toggleLabel();
@@ -401,22 +401,18 @@ let ListView = {
 
     },
     showList:function(){
-        let markers = this.markers;
-        let map = this.map;
-        this.showListBtn.addEventListener('click',function () {
-            markers.forEach((element) =>{
-                element.setMap(map);
-            })
+        let markers = octopus.getMarkers();
+        let map = octopus.getCurrentMap();
+        
+        markers.forEach(element =>{
+            element.setMap(map);
         });
     },
     hideList:function(){
-        console.log("hide");
-        let markers = octopus.getMarkers();
 
-        this.hideListBtn.addEventListener('click',function(){
-            markers.forEach((element) =>{
-                element.setMap(null);
-            })
+        let markers = octopus.getMarkers();
+        markers.forEach((element) =>{
+            element.setMap(null);
         });
     },
     toggleManager:function(map){
