@@ -348,8 +348,7 @@ let MapView = {
         streetViewService.getPanoramaByLocation(position, radius, getStreetView);
     }
 };
-//todo: hideListView's marker has some problem. infowindows shown twice.
-//todo: logic is not smoothly, need to make it correctly
+
 let ListView = {
     init:function () {
         //init dom element
@@ -379,6 +378,13 @@ let ListView = {
         this.geocoder = new google.maps.Geocoder();
         this.distanceMatrixService = new google.maps.DistanceMatrixService;
         this.directionsService = new google.maps.DirectionsService;
+        this.directionsDisplay = new google.maps.DirectionsRenderer({
+            draggable: true,
+            polylineOptions: {
+                strokeColor: 'green'
+            }
+        });
+
 
         this.handleEvent();
 
@@ -403,7 +409,7 @@ let ListView = {
     showList:function(){
         let markers = octopus.getMarkers();
         let map = octopus.getCurrentMap();
-        
+
         markers.forEach(element =>{
             element.setMap(map);
         });
@@ -488,12 +494,12 @@ let ListView = {
         }
     },
     searchWithinDistance:function () {
-        // Initialize the distance matrix service.
+        //todo when you retyped the search result, the original one did not disappear.
+        //Initialize the distance matrix service.
         let distanceMatrixService = this.distanceMatrixService;
         let address = this.searchDistanceInput.value;
         let markers = this.markers;
 
-        console.log("markers",markers);
         // Check to make sure the place entered isn't blank.
         if (address === '') {
             window.alert('You must enter an address.');
@@ -502,15 +508,12 @@ let ListView = {
             // Use the distance matrix service to calculate the duration of the
             // routes between all our markers, and the destination address entered
             // by the user. Then put all the origins into an origin matrix.
-            var origins = [];
-            // markers.forEach((element,index) =>{
-            //     origins[i] = element.position;
-            // });
+            var origins = markers.map(element => element.position);
 
-            for (var i = 0; i < markers.length; i++) {
-                origins[i] = markers[i].position;
-            }
-            console.log("origins",origins);
+            // for (var i = 0; i < markers.length; i++) {
+            //     origins[i] = markers[i].position;
+            // }
+
             var destination = address;
             // var mode = document.getElementById('mode').value;
             var mode = this.modeSelector.value;
@@ -583,6 +586,14 @@ let ListView = {
     },
     displayDirections:function (origin) {
         ListView.hideList();
+        let directionsDisplay = this.directionsDisplay;
+        //todo setDirections(null) can not clean out the route
+        // 1.try showing example to test if they can remove route or not
+        // 2.according to the API, it seems to use `response` to reset the path
+        //   need to know what is the response exactly.
+        // 3.If both of the methods cannot work maybe use the scope
+        //   to create a brand new object every time.
+        directionsDisplay.setDirections(null);
 
         let map = this.map;
         let directionsService = this.directionsService;
@@ -598,14 +609,18 @@ let ListView = {
         travelMode: google.maps.TravelMode[mode]
     }, function(response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
-            var directionsDisplay = new google.maps.DirectionsRenderer({
-                map: map,
-                directions: response,
-                draggable: true,
-                polylineOptions: {
-                    strokeColor: 'green'
-                }
-            });
+            directionsDisplay.setMap(map);
+            directionsDisplay.setDirections(response);
+            console.log("response",response);
+            console.log("status",status);
+            // let directionsDisplay = new google.maps.DirectionsRenderer({
+            //     map: map,
+            //     directions: response,
+            //     draggable: true,
+            //     polylineOptions: {
+            //         strokeColor: 'green'
+            //     }
+            // });
         } else {
             window.alert('Directions request failed due to ' + status);
         }
