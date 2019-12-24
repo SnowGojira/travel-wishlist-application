@@ -221,9 +221,6 @@ let octopus = {
     setMarker: function (marker) {
         model.markers.push(marker);
     },
-    setCurrentMarker:function(marker,index){
-        model.markers[index] = marker;
-    },
     getMarkers: function () {
         return model.markers;
     },
@@ -532,12 +529,16 @@ let ListView = {
         let origins = response.originAddresses;
         let map = this.map;
         let markers = this.markers;
+
+
         // Parse through the results, and get the distance and duration of each.
         // Because there might be  multiple origins and destinations we have a nested loop
         // Then, make sure at least 1 result was found.
         let atLeastOne = false;
+
         origins.forEach((origin,i)=>{
             let results = response.rows[i].elements;
+
             results.forEach( element =>{
                 if (element.status === "OK") {
                     // The distance is returned in feet, but the TEXT is in miles. If we wanted to switch
@@ -548,19 +549,20 @@ let ListView = {
                     // and the text.
                     var duration = element.duration.value / 60;
                     var durationText = element.duration.text;
-                    if (duration <= maxDuration) {
-                        //the origin [i] should = the markers[i]
-                        markers[i].setMap(map);
-                        //octopus.setCurrentMarker(markers[i],i);
+                    let infowindow =  new google.maps.InfoWindow();
 
+                    if (duration <= maxDuration) {
+                        infowindow.close();
+                        markers[i].setMap(map);
                         atLeastOne = true;
                         // Create a mini infowindow to open immediately and contain the
                         // distance and duration
-                        let infowindow = new google.maps.InfoWindow({
-                            content: `${durationText} away, ${distanceText}`+
+                        infowindow.setContent(
+                            `${durationText} away, ${distanceText}`+
                                 '<div><input type=\"button\" value=\"View Route\" onclick =' +
                                 '\"ListView.displayDirections(&quot;' + origin + '&quot;);\"></input></div>'
-                        });
+                            );
+
                         infowindow.open(map, markers[i]);
                         // Put this in so that this small window closes if the user clicks
                         // the marker, when the big infowindow opens
@@ -576,6 +578,9 @@ let ListView = {
         if (!atLeastOne) {
             window.alert('We could not find any locations within that distance!');
         }
+    },
+    openDistanceInfo:function(){
+
     },
     displayDirections:function (origin) {
         ListView.hideList();
