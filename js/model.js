@@ -195,9 +195,6 @@ let octopus = {
     setPoly:function(poly){
         model.currentPoly = poly;
     },
-    // getLabel:function(){
-    //     return model.enablePoly;
-    // },
     toggleLabel: function(){
         let map = octopus.getCurrentMap();
         let polygon = octopus.getPoly();
@@ -494,8 +491,7 @@ let ListView = {
         }
     },
     searchWithinDistance:function () {
-        //todo when you retyped the search result, the original one did not disappear.
-        //Initialize the distance matrix service.
+       //Initialize the distance matrix service.
         let distanceMatrixService = this.distanceMatrixService;
         let address = this.searchDistanceInput.value;
         let markers = this.markers;
@@ -509,10 +505,6 @@ let ListView = {
             // routes between all our markers, and the destination address entered
             // by the user. Then put all the origins into an origin matrix.
             var origins = markers.map(element => element.position);
-
-            // for (var i = 0; i < markers.length; i++) {
-            //     origins[i] = markers[i].position;
-            // }
 
             var destination = address;
             // var mode = document.getElementById('mode').value;
@@ -559,7 +551,7 @@ let ListView = {
                     if (duration <= maxDuration) {
                         //the origin [i] should = the markers[i]
                         markers[i].setMap(map);
-                        octopus.setCurrentMarker(markers[i],i);
+                        //octopus.setCurrentMarker(markers[i],i);
 
                         atLeastOne = true;
                         // Create a mini infowindow to open immediately and contain the
@@ -572,6 +564,7 @@ let ListView = {
                         infowindow.open(map, markers[i]);
                         // Put this in so that this small window closes if the user clicks
                         // the marker, when the big infowindow opens
+                        // todo the infowindows didnot clear they opened many times
                         markers[i].infowindow = infowindow;
                         google.maps.event.addListener(markers[i], 'click', function () {
                             this.infowindow.close();
@@ -587,13 +580,7 @@ let ListView = {
     displayDirections:function (origin) {
         ListView.hideList();
         let directionsDisplay = this.directionsDisplay;
-        //todo setDirections(null) can not clean out the route
-        // 1.try showing example to test if they can remove route or not
-        // 2.according to the API, it seems to use `response` to reset the path
-        //   need to know what is the response exactly.
-        // 3.If both of the methods cannot work maybe use the scope
-        //   to create a brand new object every time.
-        directionsDisplay.setDirections(null);
+
 
         let map = this.map;
         let directionsService = this.directionsService;
@@ -611,16 +598,6 @@ let ListView = {
         if (status === google.maps.DirectionsStatus.OK) {
             directionsDisplay.setMap(map);
             directionsDisplay.setDirections(response);
-            console.log("response",response);
-            console.log("status",status);
-            // let directionsDisplay = new google.maps.DirectionsRenderer({
-            //     map: map,
-            //     directions: response,
-            //     draggable: true,
-            //     polylineOptions: {
-            //         strokeColor: 'green'
-            //     }
-            // });
         } else {
             window.alert('Directions request failed due to ' + status);
         }
