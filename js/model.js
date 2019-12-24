@@ -549,6 +549,14 @@ let ListView = {
                     // and the text.
                     var duration = element.duration.value / 60;
                     var durationText = element.duration.text;
+                    //todo 2019/12/24
+                    // the infowindows did not close, they opened many times
+                    // I tried to pull the infowindow out
+                    // and store this in model, however the close method is not working
+                    // however the marker part can be removed using the same way.
+                    // I suppose this may be a scope problem
+                    // it takes me about almost 2hours
+                    // I will try this later.
                     let infowindow =  new google.maps.InfoWindow();
 
                     if (duration <= maxDuration) {
@@ -566,7 +574,6 @@ let ListView = {
                         infowindow.open(map, markers[i]);
                         // Put this in so that this small window closes if the user clicks
                         // the marker, when the big infowindow opens
-                        // todo the infowindows didnot clear they opened many times
                         markers[i].infowindow = infowindow;
                         google.maps.event.addListener(markers[i], 'click', function () {
                             this.infowindow.close();
