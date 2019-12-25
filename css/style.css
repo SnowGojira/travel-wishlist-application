@@ -58,6 +58,7 @@ hr {
     height: 200px;
 }
 
+#places-search,
 #search-within-time-text {
     width: 84%;
 }
@@ -74,4 +75,8 @@ hr {
 
 #zoom-to-area-text {
     width: 70%;
+}
+
+#zoom-to-area {
+    width: 24%;
 }

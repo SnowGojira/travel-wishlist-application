@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="350f06ec-1c5c-4e5d-83c9-13449edba6a2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Project_Code_12_FasterIsBetterPlacesAutocompletePart2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project_Code_12_FasterIsBetterPlacesAutocompletePart2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/model.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/model.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="721">
-              <caret line="52" column="153" selection-start-line="52" selection-start-column="153" selection-end-line="52" selection-end-column="153" />
+            <state relative-caret-position="456">
+              <caret line="50" column="10" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -46,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="381" column="11" lean-forward="true" selection-start-line="381" selection-start-column="11" selection-end-line="381" selection-end-column="11" />
+            <state relative-caret-position="41">
+              <caret line="1" column="53" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="53" />
               <folding>
                 <element signature="e#253#794#0" />
                 <element signature="e#837#4777#0" />
@@ -62,10 +62,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project_Code_11_FasterIsBetterPlacesAutocompletePart1.html">
+        <entry file="file://$PROJECT_DIR$/Project_Code_12_FasterIsBetterPlacesAutocompletePart2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="368" column="29" selection-start-line="368" selection-start-column="22" selection-end-line="368" selection-end-column="29" />
+            <state relative-caret-position="284">
+              <caret line="128" column="14" lean-forward="true" selection-start-line="123" selection-start-column="8" selection-end-line="128" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -95,8 +95,9 @@
       <find>initMap</find>
       <find>auto</find>
       <find>bounds</find>
-      <find>todo</find>
       <find>boundar</find>
+      <find>todo</find>
+      <find>key</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -112,8 +113,9 @@
         <option value="$PROJECT_DIR$/Project_Code_10_DisplayingRoutesDirectionsService.html" />
         <option value="$PROJECT_DIR$/Project_Code_11_FasterIsBetterPlacesAutocompletePart1.html" />
         <option value="$PROJECT_DIR$/testInfowindowArray.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/model.js" />
+        <option value="$PROJECT_DIR$/Project_Code_12_FasterIsBetterPlacesAutocompletePart2.html" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -194,12 +196,12 @@
       <workItem from="1575875091951" duration="5825000" />
       <workItem from="1576061214311" duration="19712000" />
       <workItem from="1576927736995" duration="19097000" />
-      <workItem from="1577245750739" duration="11463000" />
+      <workItem from="1577245750739" duration="11674000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56097000" />
+    <option name="totallyTimeSpent" value="56308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="677" extended-state="0" />
@@ -299,20 +301,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testInfowindowArray.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="877">
-          <caret line="81" column="10" selection-start-line="81" selection-start-column="10" selection-end-line="81" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="721">
-          <caret line="52" column="153" selection-start-line="52" selection-start-column="153" selection-end-line="52" selection-end-column="153" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project_Code_11_FasterIsBetterPlacesAutocompletePart1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -322,14 +310,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="381" column="11" lean-forward="true" selection-start-line="381" selection-start-column="11" selection-end-line="381" selection-end-column="11" />
+        <state relative-caret-position="41">
+          <caret line="1" column="53" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="53" />
           <folding>
             <element signature="e#253#794#0" />
             <element signature="e#837#4777#0" />
             <element signature="e#16367#19533#0" />
             <element signature="e#19616#20579#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project_Code_12_FasterIsBetterPlacesAutocompletePart2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="128" column="14" lean-forward="true" selection-start-line="123" selection-start-column="8" selection-end-line="128" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testInfowindowArray.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="877">
+          <caret line="81" column="10" selection-start-line="81" selection-start-column="10" selection-end-line="81" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="50" column="10" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
         </state>
       </provider>
     </entry>
