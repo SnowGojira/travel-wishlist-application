@@ -181,7 +181,8 @@ let model = {
                 }
             ]
         }
-    ]
+    ],
+    infowindows: []
 };
 
 let octopus = {
@@ -194,6 +195,15 @@ let octopus = {
     },
     setPoly:function(poly){
         model.currentPoly = poly;
+    },
+    getInfowindows:function(){
+        return model.infowindows;
+    },
+    resetInfowindows:function(){
+        model.infowindows = [];
+    },
+    setInfowindow:function(infowindow){
+        model.infowindows.push(infowindow);
     },
     toggleLabel: function(){
         let map = octopus.getCurrentMap();
@@ -378,7 +388,7 @@ let ListView = {
                 strokeColor: 'green'
             }
         });
-
+        this.infowindowArr = octopus.getInfowindows();
 
         this.handleEvent();
 
@@ -396,6 +406,18 @@ let ListView = {
         });
 
         this.searchDistanceBtn.addEventListener('click', function() {
+            let infowindowArr = octopus.getInfowindows() || null;
+
+            console.log(infowindowArr);
+
+            if(infowindowArr !== null && infowindowArr !== [] &&infowindowArr !==undefined){
+                console.log("not empty");
+                infowindowArr.forEach(window =>{
+                    window.close();
+                });
+                octopus.resetInfowindows();
+            }
+
             ListView.searchWithinDistance();
         });
 
@@ -536,9 +558,10 @@ let ListView = {
         // Then, make sure at least 1 result was found.
         let atLeastOne = false;
 
+
         origins.forEach((origin,i)=>{
             let results = response.rows[i].elements;
-
+            // let object = {};
             results.forEach( element =>{
                 if (element.status === "OK") {
                     // The distance is returned in feet, but the TEXT is in miles. If we wanted to switch
@@ -549,46 +572,46 @@ let ListView = {
                     // and the text.
                     var duration = element.duration.value / 60;
                     var durationText = element.duration.text;
-                    //todo 2019/12/24
-                    // the infowindows did not close, they opened many times
-                    // I tried to pull the infowindow out
-                    // and store this in model, however the close method is not working
-                    // however the marker part can be removed using the same way.
-                    // I suppose this may be a scope problem
-                    // it takes me about almost 2hours
-                    // I will try this later.
-                    let infowindow =  new google.maps.InfoWindow();
+
 
                     if (duration <= maxDuration) {
-                        infowindow.close();
-                        markers[i].setMap(map);
                         atLeastOne = true;
-                        // Create a mini infowindow to open immediately and contain the
-                        // distance and duration
+                        //octopus.setInfoLabel(false);
+
+                        // object.index = i;
+
+                        let infowindow =  new google.maps.InfoWindow();
                         infowindow.setContent(
                             `${durationText} away, ${distanceText}`+
-                                '<div><input type=\"button\" value=\"View Route\" onclick =' +
-                                '\"ListView.displayDirections(&quot;' + origin + '&quot;);\"></input></div>'
-                            );
+                            '<div><input type=\"button\" value=\"View Route\" onclick =' +
+                            '\"ListView.displayDirections(&quot;' + origin + '&quot;);\"></input></div>'
+                        );
+
+                        markers[i].setMap(map);
+                        // Create a mini infowindow to open immediately and contain the
+                        // distance and duration
 
                         infowindow.open(map, markers[i]);
                         // Put this in so that this small window closes if the user clicks
                         // the marker, when the big infowindow opens
+
+                        //this sentence maybe has no function
                         markers[i].infowindow = infowindow;
                         google.maps.event.addListener(markers[i], 'click', function () {
                             this.infowindow.close();
                         });
+
+                        octopus.setInfowindow(infowindow);
                     }
                 }
             });
         });
+
         if (!atLeastOne) {
             window.alert('We could not find any locations within that distance!');
         }
     },
-    openDistanceInfo:function(){
 
-    },
     displayDirections:function (origin) {
         ListView.hideList();
         let directionsDisplay = this.directionsDisplay;

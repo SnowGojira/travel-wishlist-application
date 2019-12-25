@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Moving Application</title>
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+  
+  <div class="container">
+    <div class="options-box">
+      <h1>Find Your New NYC Home</h1>
+      <div>
+        <input id="show-listings" type="button" value="Show Listings">
+      </div>
+
+
+
+
+    </div>
+    <div id="map"></div>
+  </div>
+
+
+    <script>
+      // this little experiment show the info can be closed;
+      var showBtn = document.getElementById('show-listings');
+
+      let module = {
+        locations:[
+          {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
+          {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465}},
+          {title: 'Union Square Open Floor Plan', location: {lat: 40.7347062, lng: -73.9895759}},
+          {title: 'East Village Hip Studio', location: {lat: 40.7281777, lng: -73.984377}},
+          {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
+          {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
+        ],
+        infoArray:[],
+        isEmpty:true,
+        map: null
+      };
+      let octopus = {
+        setMap:function (map) {
+          module.map = map;
+        },
+        getMap:function () {
+          return module.map;
+        }
+      };
+
+      function initMap() {
+        let map = new google.maps.Map(document.getElementById('map'), {
+          center: {
+            lat: 40.7413549, lng: -73.9980244
+          },
+          zoom: 13,
+          mapTypeControl: false
+        });
+        octopus.setMap(map);
+
+        showBtn.addEventListener('click',function () {
+            if(!module.isEmpty){
+                console.log(module.infoArray);
+                module.infoArray.forEach(window => window.close());
+                module.infoArray = [];
+                module.isEmpty =true;
+            }
+          createInfowindow();
+        })
+      }
+
+
+      function createInfowindow(){
+        let map = octopus.getMap();
+        let locations = module.locations;
+
+        for (var i = 0; i < locations.length; i++) {
+
+          var centrum = locations[i].location;
+          var myLatLng = new google.maps.LatLng(centrum.lat, centrum.lng);
+
+          if(i%2===0){
+            let marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              animation: google.maps.Animation.DROP
+            });
+
+            let infowindow = new google.maps.InfoWindow({
+              content: '<b>Informatie:</b><br>' + locations[i].title
+            });
+
+            infowindow.open(map, marker);
+            google.maps.event.addListener(marker, 'click', function () {
+              this.infowindow.close();
+            });
+
+            module.infoArray.push(infowindow);
+            module.isEmpty = false;
+          }
+
+        }
+
+      }
+
+      function batchInfowindow(){
+        //console.log(module.infoArray);
+        module.infoArray.forEach(element =>{
+          console.log(element);
+          element.infowindow.open(octopus.getMap(), element.marker);
+          google.maps.event.addListener(element.marker, 'click', function () {
+            this.infowindow.close();
+          });
+        });
+      }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9cFpEapXB_PkLQ4eLW5I5IzIJCJ-HSiQ&libraries=places,drawing,geometry&v=3&callback=initMap">
+    </script>
+
+
+  </body>
+</html>
