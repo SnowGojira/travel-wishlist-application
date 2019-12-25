@@ -365,6 +365,7 @@ let ListView = {
         this.searchDistanceInput = document.getElementById('search-within-time-text');
         this.modeSelector=document.getElementById('mode');
         this.maxDuration = document.getElementById('max-duration');
+
         //get lint to the model
         this.markers = octopus.getMarkers();
         this.map = octopus.getCurrentMap();
@@ -388,7 +389,13 @@ let ListView = {
                 strokeColor: 'green'
             }
         });
-        this.infowindowArr = octopus.getInfowindows();
+        // autocomplete service
+        if(this.map !== null) {
+            let timeAutocomplete = new google.maps.places.Autocomplete(this.searchDistanceInput);
+            let zoomAutocomplete = new google.maps.places.Autocomplete(this.zoomInput);
+            timeAutocomplete.bindTo('bounds', this.map);
+            zoomAutocomplete.bindTo('bounds', this.map);
+        }
 
         this.handleEvent();
 
