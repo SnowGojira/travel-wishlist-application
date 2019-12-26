@@ -407,6 +407,8 @@ let ListView = {
         this.searchBox = new google.maps.places.SearchBox(
             document.getElementById('places-search'));
         // Bias the searchbox to within the bounds of the map.
+        //todo 12-25-2019
+        // the hideList need to change
         this.searchBox.bindTo('bounds', this.map);
         this.searchBox.setBounds(this.map.getBounds());
         this.searchBox.addListener('places_changed', function() {
