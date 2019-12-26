@@ -68,7 +68,56 @@ nav h2{
     outline: none;
     font-size: 13px;
     padding: 10px;
+    margin-bottom: 1rem;
 }
+.location_list{
+    list-style: none;
+    width: 100%;
+    height: auto;
+}
+
+.location_list li{
+    box-sizing: border-box;
+    width: 100%;
+    /* height: auto; */
+    position: relative;
+    /* display: inline-block; */
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.location_name{
+    max-width: 60%;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: absolute;
+    /* margin-right: 5rem; */
+    }
+.location_name.complete{
+    color: #51b4c7;
+}
+.complete{
+    /* float: left; */
+    width: 16px;
+    height: 16px;
+    top: 18px;
+    left: 240px;
+    border: none;
+    background:url("../img/check.png") no-repeat;
+    position: absolute;
+}
+
+.reset{
+    width: 16px;
+    height: 16px;
+    border: none;
+    left: 273px;
+    top: 19px;
+    background:url("../img/close.png") no-repeat;
+    position: absolute;
+}
+
 
 /* If there is enough space (> 600px), we keep the drawer open all the time. */
 @media (min-width: 600px) {
