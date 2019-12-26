@@ -30,8 +30,8 @@ main {
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color: #5686c0;
 }
+
 #menu {
     width: 2rem;
     height: 2rem;
@@ -58,7 +58,16 @@ nav.open {
 }
 
 nav h2{
-    margin:1rem
+    margin: 1rem 1rem 2rem;
+}
+
+#location_filter{
+    width: 277px;
+    height: 2rem;
+    border: 1px solid #000;
+    outline: none;
+    font-size: 13px;
+    padding: 10px;
 }
 
 /* If there is enough space (> 600px), we keep the drawer open all the time. */
