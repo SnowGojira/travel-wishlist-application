@@ -9,14 +9,12 @@ When you download this file, click `index.html` to run this application.
 ### API I used
 
 1. google map: to get all the map service.
-2. yelp: to get the open time information in the info window content.
 
 ### The things I am focusing with
 
 1. `knockout` I combine [the to-do list sample](http://todomvc.com/examples/knockoutjs/) which can help me more familiar with mvvm pattern.
-2. `google and yelp` use these two api, I can make sure I fully understand the API callback.
-3. `localStorage` this method is very important to improve user's experience.
-4. `filter` this method is new to me, need to put more effort.
+2. `google` I think the api is not hard to learn, you just need to figure out the json's structure.
+3. `filter` this method is new to me, need to put more effort.
 
 ## Additional Instrument
 `HardCodeLocationArray.html` help me to generate `locations` json array object. It don't have any logic association with this app itself.

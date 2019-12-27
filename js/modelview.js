@@ -1,4 +1,195 @@
 let dataSet = {
+    mapStyle:[
+        {
+            "featureType": "all",
+            "elementType": "labels",
+            "stylers": [
+                {
+                    "visibility": "off"
+                },
+                {
+                    "color": "#f49f53"
+                }
+            ]
+        },
+        {
+            "featureType": "landscape",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "color": "#f9ddc5"
+                },
+                {
+                    "lightness": -7
+                }
+            ]
+        },
+        {
+            "featureType": "poi.business",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "color": "#645c20"
+                },
+                {
+                    "lightness": 38
+                }
+            ]
+        },
+        {
+            "featureType": "poi.government",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "color": "#9e5916"
+                },
+                {
+                    "lightness": 46
+                }
+            ]
+        },
+        {
+            "featureType": "poi.medical",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "color": "#813033"
+                },
+                {
+                    "lightness": 38
+                },
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.park",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "color": "#645c20"
+                },
+                {
+                    "lightness": 39
+                }
+            ]
+        },
+        {
+            "featureType": "poi.school",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "color": "#a95521"
+                },
+                {
+                    "lightness": 35
+                }
+            ]
+        },
+        {
+            "featureType": "poi.sports_complex",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "color": "#9e5916"
+                },
+                {
+                    "lightness": 32
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "color": "#813033"
+                },
+                {
+                    "lightness": 43
+                }
+            ]
+        },
+        {
+            "featureType": "road.local",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "color": "#f19f53"
+                },
+                {
+                    "weight": 1.3
+                },
+                {
+                    "visibility": "on"
+                },
+                {
+                    "lightness": 16
+                }
+            ]
+        },
+        {
+            "featureType": "road.local",
+            "elementType": "geometry.stroke",
+            "stylers": [
+                {
+                    "color": "#f19f53"
+                },
+                {
+                    "lightness": -10
+                }
+            ]
+        },
+        {
+            "featureType": "transit",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "lightness": 38
+                }
+            ]
+        },
+        {
+            "featureType": "transit.line",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "color": "#813033"
+                },
+                {
+                    "lightness": 22
+                }
+            ]
+        },
+        {
+            "featureType": "transit.station",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "color": "#1994bf"
+                },
+                {
+                    "saturation": -69
+                },
+                {
+                    "gamma": 0.99
+                },
+                {
+                    "lightness": 43
+                }
+            ]
+        }
+    ],
     locations:[
         {address: "Empire State Building",location: {lat: 40.7484405, lng: -73.98566439999999}},
         {address: "Brooklyn Bridge",location: {lat: 40.7060855, lng: -73.9968643}},
@@ -56,13 +247,15 @@ let locationItem = function(data){
     this.address = ko.observable(data.address);
     this.checked= ko.observable(false);
 
+    // check button and reset button function.
     this.complete = function () {
         self.checked(true);
-    }
-
+    };
     this.reset = function () {
         self.checked(false);
     }
+
+
 };
 
 
@@ -71,8 +264,6 @@ let ViewModel = function(){
     this.$drawer = $('#drawer');
     this.locationList = ko.observableArray();
     this.searchInput = ko.observable("");
-
-
 
     //handle the functionality of toggle drawer part
     this.toggleOpenClass = function (e) {
@@ -83,8 +274,8 @@ let ViewModel = function(){
     };
 
     dataSet.locations.forEach((data)=>self.locationList.push(new locationItem(data)));
-    //filter the locations
 
+    //filter the locations
     this.filterLocationArray = ko.pureComputed(function() {
         let value = self.searchInput();
         if(value == "") return this.locationList();
@@ -93,12 +284,24 @@ let ViewModel = function(){
         });
     },this);
 
-    //check status change
-
-
 };
 
 
 ko.applyBindings(new ViewModel());
+
+function initMap() {
+    let map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+            lat: 40.7413549, lng: -73.9980244
+        },
+        styles:dataSet.mapStyle,
+        zoom: 13,
+        mapTypeControl: false
+    });
+
+    //octopus.setMap(map);
+
+
+}
 
 
