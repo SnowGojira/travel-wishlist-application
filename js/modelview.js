@@ -340,7 +340,9 @@ function initMap() {
 
         octopus.setMarkers(marker);
 
-        marker.addListener('click',markerHandler.apply(this));
+        marker.addListener('click',function () {
+            markerHandler(this);
+        });
 
         //markerHandler(marker);
     });
@@ -358,6 +360,7 @@ function icon (color){
 
 function markerHandler(marker){
     let map = octopus.getMap();
+
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function () {
         marker.setAnimation(null);
