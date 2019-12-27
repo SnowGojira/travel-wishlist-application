@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="350f06ec-1c5c-4e5d-83c9-13449edba6a2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/js/model.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/modelview.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/modelview.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -45,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/model.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="617" column="23" selection-start-line="617" selection-start-column="19" selection-end-line="617" selection-end-column="23" />
+              <caret line="728" column="51" selection-start-line="728" selection-start-column="44" selection-end-line="728" selection-end-column="51" />
               <folding>
                 <element signature="e#859#4799#0" />
               </folding>
@@ -69,17 +70,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
+            <state relative-caret-position="-761">
               <caret line="16" column="78" selection-start-line="16" selection-start-column="78" selection-end-line="16" selection-end-column="78" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modelview.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="218" column="8" selection-start-line="218" selection-start-column="8" selection-end-line="218" selection-end-column="8" />
+            <state relative-caret-position="387">
+              <caret line="368" column="4" selection-start-line="368" selection-start-column="4" selection-end-line="368" selection-end-column="4" />
               <folding>
                 <element signature="e#29#4540#0" />
               </folding>
@@ -132,10 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pano</find>
-      <find>drawing</find>
-      <find>polygon</find>
-      <find>toggle</find>
       <find>toggleD</find>
       <find>displayMarkersWithinTime</find>
       <find>search-within-time-text</find>
@@ -161,7 +158,11 @@
       <find>markers</find>
       <find>marker</find>
       <find>aler</find>
+      <find>infowi</find>
+      <find>setContent</find>
       <find>map</find>
+      <find>infow</find>
+      <find>close()</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,13 +180,13 @@
         <option value="$PROJECT_DIR$/Project_Code_13_DevilInTheDetailsPlacesDetails.html" />
         <option value="$PROJECT_DIR$/Project_Code_12_FasterIsBetterPlacesAutocompletePart2.html" />
         <option value="$PROJECT_DIR$/testInfowindowArray.html" />
-        <option value="$PROJECT_DIR$/js/model.js" />
         <option value="$PROJECT_DIR$/js/HardCoreLocationArray.html" />
         <option value="$PROJECT_DIR$/HardCoreLocationArray.html" />
         <option value="$PROJECT_DIR$/css/styles.css" />
         <option value="$PROJECT_DIR$/testUpdateInput.html" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/model.js" />
         <option value="$PROJECT_DIR$/js/modelview.js" />
       </list>
     </option>
@@ -293,15 +294,15 @@
       <workItem from="1576061214311" duration="19712000" />
       <workItem from="1576927736995" duration="19097000" />
       <workItem from="1577245750739" duration="29404000" />
-      <workItem from="1577412900057" duration="21109000" />
+      <workItem from="1577412900057" duration="22154000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95147000" />
+    <option name="totallyTimeSpent" value="96192000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="58" y="58" width="1366" height="677" extended-state="0" />
+    <frame x="58" y="58" width="1366" height="677" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4974359" visible="true" weight="0.15613383" />
@@ -396,13 +397,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HardCoreLocationArray.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="951">
-          <caret line="116" column="7" lean-forward="true" selection-start-line="97" selection-start-column="6" selection-end-line="116" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/map.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -429,27 +423,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="-761">
           <caret line="16" column="78" selection-start-line="16" selection-start-column="78" selection-end-line="16" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HardCoreLocationArray.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="951">
+          <caret line="116" column="7" lean-forward="true" selection-start-line="97" selection-start-column="6" selection-end-line="116" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modelview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="368" column="4" selection-start-line="368" selection-start-column="4" selection-end-line="368" selection-end-column="4" />
+          <folding>
+            <element signature="e#29#4540#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/model.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="617" column="23" selection-start-line="617" selection-start-column="19" selection-end-line="617" selection-end-column="23" />
+          <caret line="728" column="51" selection-start-line="728" selection-start-column="44" selection-end-line="728" selection-end-column="51" />
           <folding>
             <element signature="e#859#4799#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modelview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="218" column="8" selection-start-line="218" selection-start-column="8" selection-end-line="218" selection-end-column="8" />
-          <folding>
-            <element signature="e#29#4540#0" />
           </folding>
         </state>
       </provider>

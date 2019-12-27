@@ -351,7 +351,7 @@ let MapView = {
                 var panorama = new google.maps.StreetViewPanorama( document.getElementById('pano')
                     , panoramaOptions);
             } else {
-                infowindow.setContent('<div>' + title + '</div>' +
+                ndow.setContent('<div>' + title + '</div>' +
                     '<div>No Street View Found</div>');
             }
         }
