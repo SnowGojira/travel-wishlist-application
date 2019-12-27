@@ -190,6 +190,8 @@ let dataSet = {
             ]
         }
     ],
+    map:null,
+    markers:[],
     locations:[
         {address: "Empire State Building",location: {lat: 40.7484405, lng: -73.98566439999999}},
         {address: "Brooklyn Bridge",location: {lat: 40.7060855, lng: -73.9968643}},
@@ -242,6 +244,22 @@ let dataSet = {
     ]
 };
 
+let octopus = {
+    setMap:function(map){
+        dataSet.map = map;
+    },
+    getMap: function () {
+        return dataSet.map;
+    },
+    setMarkers:function(map){
+
+    },
+    getMarkers: function () {
+
+    },
+};
+
+
 let locationItem = function(data){
     let self = this;
     this.address = ko.observable(data.address);
@@ -257,6 +275,7 @@ let locationItem = function(data){
 
 
 };
+
 
 
 let ViewModel = function(){
@@ -291,15 +310,49 @@ ko.applyBindings(new ViewModel());
 
 function initMap() {
     let map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-            lat: 40.7413549, lng: -73.9980244
-        },
+        center: {lat: 40.7516208, lng: -73.97550199999999},
         styles:dataSet.mapStyle,
         zoom: 13,
         mapTypeControl: false
     });
 
-    //octopus.setMap(map);
+    octopus.setMap(map);
+
+    //make marker
+    function icon (color){
+        return new google.maps.MarkerImage(
+            `http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|${color}|40|_|%E2%80%A2`,
+            new google.maps.Size(21, 34),
+            new google.maps.Point(0, 0),
+            new google.maps.Point(10, 34),
+            new google.maps.Size(21, 34));
+    }
+
+    let defaultIcon = icon("ff4536");
+    let checkedIcon = icon("51b4c7");
+
+    dataSet.locations.forEach((location)=>{
+        let marker = new google.maps.Marker({
+            position:location.location,
+            title:location.address,
+            map:map,
+            icon:defaultIcon,
+            animation: google.maps.Animation.DROP
+        });
+
+        marker.addListener('click',clickMarker);
+
+        function clickMarker() {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function () {
+                marker.setAnimation(null);
+            },700);
+        }
+
+        octopus.setMarker(markers);
+    });
+
+    //
 
 
 }
