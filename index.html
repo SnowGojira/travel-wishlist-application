@@ -9,8 +9,10 @@
   <body>
   <nav id="drawer" class="list_view">
     <h2>Travel Wish List</h2>
-    <input id="location_filter" type="text" placeholder="Enter your favorite area!">
-    <ul class="location_list" data-bind="foreach: locationList">
+    <input id="search_input" type="text" data-bind="textInput: searchInput"
+           placeholder="Enter your favorite area!">
+<!--    <pre id="filter_str" data-bind="text: ko.toJSON(searchInput)"></pre>-->
+    <ul class="location_list" data-bind="template: { foreach: filterLocationArray}">
       <li >
         <span class="location_name" data-bind="text: address"></span>
         <input class="complete" type="button"/>
@@ -34,10 +36,10 @@
   <script src="js/libs/knockout-3.5.1.js"></script>
   <script src="js/modelview.js"></script>
 
-  <script async defer
-        src=
-            "https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyB9cFpEapXB_PkLQ4eLW5I5IzIJCJ-HSiQ&v=3&callback=initMap">
-  </script>
+<!--  <script async defer-->
+<!--        src=-->
+<!--            "https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyB9cFpEapXB_PkLQ4eLW5I5IzIJCJ-HSiQ&v=3&callback=initMap">-->
+<!--  </script>-->
 
 
   </body>
