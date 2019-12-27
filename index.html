@@ -14,7 +14,7 @@
 <!--    <pre id="filter_str" data-bind="text: ko.toJSON(searchInput)"></pre>-->
     <ul class="location_list" data-bind="template: { foreach: filterLocationArray}">
       <li >
-        <span class="location_name" data-bind='text: address,
+        <span class="location_name" data-bind='text: address,click: clickList,
               style: {color: checked() ? "#51b4c7" : "#eee"}'></span>
         <input class="complete" data-bind="click: complete" type="button"/>
         <input class="reset" data-bind="click: reset" type="button"/>

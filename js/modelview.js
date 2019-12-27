@@ -251,11 +251,11 @@ let octopus = {
     getMap: function () {
         return dataSet.map;
     },
-    setMarkers:function(map){
-
+    setMarkers:function(marker){
+        dataSet.markers.push(marker);
     },
     getMarkers: function () {
-
+       return dataSet.markers;
     },
 };
 
@@ -273,6 +273,12 @@ let locationItem = function(data){
         self.checked(false);
     }
 
+    //todo how to bind google maps marker this
+
+    this.clickList = function () {
+        let markers= octopus.getMarkers();
+        console.log("***",markers);
+    }
 
 };
 
@@ -349,7 +355,7 @@ function initMap() {
             },700);
         }
 
-        octopus.setMarker(markers);
+        octopus.setMarkers(marker);
     });
 
     //
