@@ -59,11 +59,10 @@ let locationView = function(data){
 let ViewModel = function(){
     let self = this;
     this.$drawer = $('#drawer');
-    this.locationList = ko.observableArray([]);
-    this.$textInput = $('#search_input');
+    this.locationList = ko.observableArray();
+    this.filterList = ko.observableArray();
     this.searchInput = ko.observable("");
-
-
+    this.showList = ko.observable(true);
 
     //handle the functionality of toggle drawer part
     this.toggleOpenClass = function (e) {
@@ -72,22 +71,20 @@ let ViewModel = function(){
     this.removeOpenClass = function () {
         self.$drawer.removeClass("open");
     };
-
+    dataSet.locations.forEach((data)=>self.locationList.push(data));
     //filter the locations
     this.filterLocationArray = ko.pureComputed(function() {
 
         let value = self.searchInput();
-        console.log("**",self.searchInput());
-
-        //todo make the template module work
-            dataSet.locations.forEach((data) => {
-                self.locationList.push(new locationView(data));
-            });
-
-            return self.locationList;
+        
+        if(value == "") return this.locationList();
+        return ko.utils.arrayFilter(this.locationList(), function(location) {
+            return location.address.indexOf(value) > -1;
+        });
 
 
-    })
+
+    },this)
 };
 
 
