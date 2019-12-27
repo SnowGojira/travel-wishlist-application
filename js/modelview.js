@@ -50,20 +50,27 @@ let dataSet = {
         {address: "Bryant Park",location: {lat: 40.7535965, lng: -73.9832326}}
     ]
 };
-/*
-     * Open the drawer when the menu ison is clicked.
-     */
-var menu = document.querySelector('#menu');
-var main = document.querySelector('main');
-var drawer = document.querySelector('#drawer');
 
-menu.addEventListener('click', function(e) {
-    console.log('icon clicked');
-    $('#drawer').toggleClass("open");
-    e.stopPropagation();
-});
-main.addEventListener('click', function() {
-    console.log('main clicked');
-    // drawer.classList.remove('open');
-    $('#drawer').removeClass("open");
-});
+let locationView = function(data){
+    this.address = ko.observable(data.address);
+}
+
+let ViewModel = function(){
+    let self = this;
+    this.$drawer = $('#drawer');
+    this.locationList = ko.observableArray([]);
+
+    dataSet.locations.forEach((data)=>{
+        self.locationList.push(new locationView(data));
+    });
+    //handle the functionality of toggle drawer part
+    this.toggleOpenClass = function (e) {
+        self.$drawer.toggleClass("open");
+    };
+    this.removeOpenClass = function () {
+        self.$drawer.removeClass("open");
+    };
+
+};
+
+ko.applyBindings(new ViewModel());

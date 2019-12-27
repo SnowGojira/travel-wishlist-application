@@ -107,7 +107,9 @@ nav h2{
     background:url("../img/check.png") no-repeat;
     position: absolute;
 }
-
+.complete:hover{
+    top: 16px;
+}
 .reset{
     width: 16px;
     height: 16px;
@@ -116,6 +118,9 @@ nav h2{
     top: 19px;
     background:url("../img/close.png") no-repeat;
     position: absolute;
+}
+.reset:hover{
+    top: 16px;
 }
 
 

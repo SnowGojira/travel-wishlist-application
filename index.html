@@ -10,52 +10,28 @@
   <nav id="drawer" class="list_view">
     <h2>Travel Wish List</h2>
     <input id="location_filter" type="text" placeholder="Enter your favorite area!">
-    <ul class="location_list">
+    <ul class="location_list" data-bind="foreach: locationList">
       <li >
-        <span class="location_name">Bronx Zoo Wildlife Conservation Society</span>
+        <span class="location_name" data-bind="text: address"></span>
         <input class="complete" type="button"/>
         <input class="reset" type="button"/>
       </li>
-
-      <li >
-        <span class="location_name">Bronx Zoo Wildlife Conservation Society</span>
-        <input class="complete" type="button"/>
-        <input class="reset" type="button"/>
-      </li>
-
-      <li >
-        <span class="location_name">Bronx Zoo Wildlife Conservation Society</span>
-        <input class="complete" type="button"/>
-        <input class="reset" type="button"/>
-      </li>
-
-      <li >
-        <span class="location_name">Bronx Zoo Wildlife Conservation Society</span>
-        <input class="complete" type="button"/>
-        <input class="reset" type="button"/>
-      </li>
-
-      <li >
-        <span class="location_name">Bronx Zoo Wildlife Conservation Society</span>
-        <input class="complete" type="button"/>
-        <input class="reset" type="button"/>
-      </li>
-
     </ul>
   </nav>
 
   <main class="map_container">
-    <div class="top_bar">
+    <div class="top_bar" data-bind="click:toggleOpenClass">
       <svg id="menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"></path>
       </svg>
     </div>
 
-    <div id="map"></div>
+    <div id="map" data-bind="click:removeOpenClass"></div>
 
   </main>
 
   <script src="js/libs/jquery.min.js"></script>
+  <script src="js/libs/knockout-3.5.1.js"></script>
   <script src="js/modelview.js"></script>
 
   <script async defer
