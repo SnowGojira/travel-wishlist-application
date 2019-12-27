@@ -44,6 +44,7 @@ nav {
     width: 300px;
     height: 100%;
     position: absolute;
+    overflow: auto;
     z-index: 20;
     -webkit-transform: translate(-300px, 0);
     transform: translate(-300px, 0);
