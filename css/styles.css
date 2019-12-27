@@ -94,10 +94,12 @@ nav h2{
     text-overflow: ellipsis;
     position: absolute;
     /* margin-right: 5rem; */
-    }
+}
+
 .location_name.complete{
     color: #51b4c7;
 }
+
 .complete{
     /* float: left; */
     width: 16px;

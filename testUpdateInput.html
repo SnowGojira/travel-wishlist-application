@@ -39,10 +39,20 @@ ViewModel:
     <button data-bind='click: addPlanet.bind($data, "rock")'>Add rocky planet</button>
     <button data-bind='click: addPlanet.bind($data, "gasgiant")'>Add gas giant</button>
 </p>
+<hr>
+<div data-bind="style: { color: currentProfit() ? 'red' : 'black' }">
+    Profit Information
+</div>
+<button data-bind='click:toggle'></button>
 
 <script>
 
     var PlanetsModel = function() {
+        let self = this;
+        this.currentProfit= ko.observable(true);
+        this.toggle = function () {
+            self.currentProfit(false);
+        };
         this.userName=ko.observable(""),        // Initially blank
         this.userPassword=ko.observable("abc")  // Prepopulate
 

@@ -51,8 +51,18 @@ let dataSet = {
     ]
 };
 
-let locationView = function(data){
+let locationItem = function(data){
+    let self = this;
     this.address = ko.observable(data.address);
+    this.checked= ko.observable(false);
+
+    this.complete = function () {
+        self.checked(true);
+    }
+
+    this.reset = function () {
+        self.checked(false);
+    }
 };
 
 
@@ -60,9 +70,9 @@ let ViewModel = function(){
     let self = this;
     this.$drawer = $('#drawer');
     this.locationList = ko.observableArray();
-    this.filterList = ko.observableArray();
     this.searchInput = ko.observable("");
-    this.showList = ko.observable(true);
+
+
 
     //handle the functionality of toggle drawer part
     this.toggleOpenClass = function (e) {
@@ -71,20 +81,21 @@ let ViewModel = function(){
     this.removeOpenClass = function () {
         self.$drawer.removeClass("open");
     };
-    dataSet.locations.forEach((data)=>self.locationList.push(data));
-    //filter the locations
-    this.filterLocationArray = ko.pureComputed(function() {
 
+    dataSet.locations.forEach((data)=>self.locationList.push(new locationItem(data)));
+    //filter the locations
+
+    this.filterLocationArray = ko.pureComputed(function() {
         let value = self.searchInput();
-        
         if(value == "") return this.locationList();
         return ko.utils.arrayFilter(this.locationList(), function(location) {
-            return location.address.indexOf(value) > -1;
+            return location.address().indexOf(value) > -1;
         });
+    },this);
+
+    //check status change
 
 
-
-    },this)
 };
 
 
