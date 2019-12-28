@@ -192,6 +192,8 @@ let dataSet = {
     ],
     map:null,
     markers:[],
+    filterMarkers:[],
+    isFiltered:false,
     locations:[
         {address: "Empire State Building",location: {lat: 40.7484405, lng: -73.98566439999999}},
         {address: "Brooklyn Bridge",location: {lat: 40.7060855, lng: -73.9968643}},
@@ -246,6 +248,18 @@ let octopus = {
     getMarkers: function () {
        return dataSet.markers;
     },
+    setFilterMarkers:function(marker){
+        dataSet.filterMarkers.push(marker);
+    },
+    getFilterMarkers: function () {
+        return dataSet.filterMarkers;
+    },
+    setFilterLabel(label){
+        dataSet.isFiltered = label;
+    },
+    getFilterLabel(){
+        return dataSet.isFiltered;
+    }
 };
 
 
@@ -254,6 +268,12 @@ let locationItem = function(data){
     this.address = ko.observable(data.address);
     this.checked= ko.observable(false);
 
+    let markers= octopus.getMarkers();
+    let map = octopus.getMap();
+
+    let filterLabel = octopus.getFilterLabel();
+    //console.log("***",filterLabel);
+
     // check button and reset button function.
     this.complete = function () {
         self.checked(true);
@@ -261,23 +281,22 @@ let locationItem = function(data){
     this.reset = function () {
         self.checked(false);
     }
-
-    //todo how to bind google maps marker this
+    //the filter markers
+    //todo can I catch this with Promise?
+    //let checkedIcon = icon("51b4c7");
+    //todo may be I can observe a value
 
     this.clickList = function () {
-        let markers= octopus.getMarkers();
-        if(markers == []){
-            window.alert("It is loading now, Please try it later.");
-        }else{
-            markers.forEach((marker)=>{
-                let lat = marker.position.lat();
-                if(lat === data.location.lat){
-                    console.log("***",marker);
-                    markerHandler(marker);
-
-                }
+            let clickItem = markers.filter(function (marker) {
+                return marker.title === self.address();
             });
-        }
+
+            if(clickItem[0]){
+                markerHandler(clickItem[0]);
+            }else{
+                window.alert("Marker is not ready for displaying, please try it later");
+            }
+
     }
 
 };
@@ -288,6 +307,7 @@ let ViewModel = function(){
     let self = this;
     this.$drawer = $('#drawer');
     this.locationList = ko.observableArray();
+    //this.markersList = ko.observableArray();
     this.searchInput = ko.observable("");
 
     //handle the functionality of toggle drawer part
@@ -300,19 +320,70 @@ let ViewModel = function(){
 
     dataSet.locations.forEach((data)=>self.locationList.push(new locationItem(data)));
 
+
     //filter the locations
     this.filterLocationArray = ko.pureComputed(function() {
         let value = self.searchInput();
-        if(value == "") return this.locationList();
-        return ko.utils.arrayFilter(this.locationList(), function(location) {
-            return location.address().indexOf(value) > -1;
-        });
+        let markers = octopus.getMarkers();
+        let locationFilterList=[],
+            markersFilterList=[];
+
+
+        if(value == "") {
+            showMarkers(markers);
+            return this.locationList();
+        }else{
+            //filter the list item
+            locationFilterList = ko.utils.arrayFilter(this.locationList(), function(location) {
+                return location.address().indexOf(value) > -1;
+            });
+
+            //filter the markers
+            hideMarker(markers);
+            if(markers !==[] && locationFilterList !== []){
+                 markers.forEach((marker)=>{
+                     locationFilterList.forEach((element)=>{
+                         if(marker.title === element.address()){
+                             markersFilterList.push(marker);
+                         }
+                     });
+                })
+            }
+            showMarkers(markersFilterList);
+            console.log("what is fliter markers is", markersFilterList);
+            return locationFilterList;
+        }
+
     },this);
 
 };
 
 
 ko.applyBindings(new ViewModel());
+
+function hideMarker(makers) {
+    makers.forEach((marker)=>{
+        marker.setMap(null);
+    })
+}
+
+function showMarkers(makers) {
+    let map = octopus.getMap();
+    makers.forEach((marker)=>{
+        marker.setMap(map);
+    });
+
+}
+
+// todo how to catch network error
+function icon (color){
+    return new google.maps.MarkerImage(
+        `http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|${color}|40|_|%E2%80%A2`,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(10, 34),
+        new google.maps.Size(21, 34));
+}
 
 function initMap() {
     let map = new google.maps.Map(document.getElementById('map'), {
@@ -327,7 +398,6 @@ function initMap() {
     //make marker
 
     let defaultIcon = icon("ff4536");
-    let checkedIcon = icon("51b4c7");
 
     dataSet.locations.forEach((location)=>{
         let marker = new google.maps.Marker({
@@ -344,18 +414,8 @@ function initMap() {
             markerHandler(this);
         });
 
-        //markerHandler(marker);
     });
 
-}
-
-function icon (color){
-    return new google.maps.MarkerImage(
-        `http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|${color}|40|_|%E2%80%A2`,
-        new google.maps.Size(21, 34),
-        new google.maps.Point(0, 0),
-        new google.maps.Point(10, 34),
-        new google.maps.Size(21, 34));
 }
 
 function markerHandler(marker){
