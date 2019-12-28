@@ -248,17 +248,17 @@ let octopus = {
     getMarkers: function () {
        return dataSet.markers;
     },
-    setFilterMarkers:function(marker){
-        dataSet.filterMarkers.push(marker);
+    getDefaultIcon(){
+        return icon("ff4536");
     },
-    getFilterMarkers: function () {
-        return dataSet.filterMarkers;
+    getCheckedIcon(){
+        return icon("51b4c7");
     },
-    setFilterLabel(label){
-        dataSet.isFiltered = label;
+    setCheckedIcon(marker){
+        marker.setIcon(octopus.getCheckedIcon());
     },
-    getFilterLabel(){
-        return dataSet.isFiltered;
+    setDefaultIcon(marker){
+        marker.setIcon(octopus.getDefaultIcon());
     }
 };
 
@@ -268,38 +268,36 @@ let locationItem = function(data){
     this.address = ko.observable(data.address);
     this.checked= ko.observable(false);
 
-    let markers= octopus.getMarkers();
-    let map = octopus.getMap();
-
-    let filterLabel = octopus.getFilterLabel();
-    //console.log("***",filterLabel);
 
     // check button and reset button function.
     this.complete = function () {
         self.checked(true);
+        selectedMarker(self,octopus.setCheckedIcon);
     };
     this.reset = function () {
         self.checked(false);
-    }
-    //the filter markers
-    //todo can I catch this with Promise?
-    //let checkedIcon = icon("51b4c7");
-    //todo may be I can observe a value
+        selectedMarker(self,octopus.setDefaultIcon);
+    };
 
+    //list item click to pop marker's detail
     this.clickList = function () {
-            let clickItem = markers.filter(function (marker) {
-                return marker.title === self.address();
-            });
-
-            if(clickItem[0]){
-                markerHandler(clickItem[0]);
-            }else{
-                window.alert("Marker is not ready for displaying, please try it later");
-            }
-
+        selectedMarker(self,markerHandler);
     }
-
 };
+
+function selectedMarker(...args){
+    let markers= octopus.getMarkers();
+
+    let clickItem = markers.filter(function (marker) {
+        return marker.title === args[0].address();
+    });
+
+    if(clickItem[0]){
+        args[1](clickItem[0]);
+    }else{
+        window.alert("Marker is not ready for displaying, please try it later");
+    }
+}
 
 
 
@@ -307,7 +305,6 @@ let ViewModel = function(){
     let self = this;
     this.$drawer = $('#drawer');
     this.locationList = ko.observableArray();
-    //this.markersList = ko.observableArray();
     this.searchInput = ko.observable("");
 
     //handle the functionality of toggle drawer part
@@ -319,7 +316,6 @@ let ViewModel = function(){
     };
 
     dataSet.locations.forEach((data)=>self.locationList.push(new locationItem(data)));
-
 
     //filter the locations
     this.filterLocationArray = ko.pureComputed(function() {
@@ -343,14 +339,12 @@ let ViewModel = function(){
             if(markers !==[] && locationFilterList !== []){
                  markers.forEach((marker)=>{
                      locationFilterList.forEach((element)=>{
-                         if(marker.title === element.address()){
-                             markersFilterList.push(marker);
-                         }
+                         if(marker.title === element.address()) markersFilterList.push(marker);
                      });
                 })
             }
+
             showMarkers(markersFilterList);
-            console.log("what is fliter markers is", markersFilterList);
             return locationFilterList;
         }
 
@@ -361,6 +355,7 @@ let ViewModel = function(){
 
 ko.applyBindings(new ViewModel());
 
+//callback functions
 function hideMarker(makers) {
     makers.forEach((marker)=>{
         marker.setMap(null);
@@ -375,7 +370,6 @@ function showMarkers(makers) {
 
 }
 
-// todo how to catch network error
 function icon (color){
     return new google.maps.MarkerImage(
         `http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|${color}|40|_|%E2%80%A2`,
@@ -383,39 +377,6 @@ function icon (color){
         new google.maps.Point(0, 0),
         new google.maps.Point(10, 34),
         new google.maps.Size(21, 34));
-}
-
-function initMap() {
-    let map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 40.7312339, lng: -73.9971027},
-        styles:dataSet.mapStyle,
-        zoom: 12,
-        mapTypeControl: false
-    });
-
-    octopus.setMap(map);
-
-    //make marker
-
-    let defaultIcon = icon("ff4536");
-
-    dataSet.locations.forEach((location)=>{
-        let marker = new google.maps.Marker({
-            position:location.location,
-            title:location.address,
-            map:map,
-            icon:defaultIcon,
-            animation: google.maps.Animation.DROP
-        });
-
-        octopus.setMarkers(marker);
-
-        marker.addListener('click',function () {
-            markerHandler(this);
-        });
-
-    });
-
 }
 
 function markerHandler(marker){
@@ -431,9 +392,31 @@ function markerHandler(marker){
     infowindow.setContent('<div>' + marker.title + '</div>');
 
     infowindow.open(map, marker);
-
-
 }
 
+function initMap() {
+    let map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 40.7312339, lng: -73.9971027},
+        styles:dataSet.mapStyle,
+        zoom: 12,
+        mapTypeControl: false
+    });
 
+    octopus.setMap(map);
 
+    dataSet.locations.forEach((location)=>{
+        let marker = new google.maps.Marker({
+            position:location.location,
+            title:location.address,
+            map:map,
+            icon:octopus.getDefaultIcon(),
+            animation: google.maps.Animation.DROP
+        });
+
+        octopus.setMarkers(marker);
+
+        marker.addListener('click',function () {
+            markerHandler(this);
+        });
+    });
+}
